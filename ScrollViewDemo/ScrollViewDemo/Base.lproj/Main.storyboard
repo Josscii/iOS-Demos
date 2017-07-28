@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="E5j-61-9lK">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller2-->
+        <scene sceneID="MuN-nY-RY1">
+            <objects>
+                <viewController id="E5j-61-9lK" customClass="ViewController2" customModule="ScrollViewDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b2h-Rg-e8N"/>
+                        <viewControllerLayoutGuide type="bottom" id="dC9-2i-SjT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tu5-MA-SXN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contentInsets.top = 64" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDj-9i-Zvr">
+                                <rect key="frame" x="100" y="20" width="175" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="64" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="OpL-Z2-xYZ">
+                                <rect key="frame" x="14" y="56" width="347" height="31"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contentInsets.bottom = 49" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCS-3l-VWT">
+                                <rect key="frame" x="85" y="94" width="205" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="49" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="LVw-pQ-6Mz">
+                                <rect key="frame" x="14" y="123" width="347" height="31"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contentSize.height = 300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEz-wg-ez2">
+                                <rect key="frame" x="90.5" y="161" width="194" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="400" minValue="0.0" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="T8l-Nl-Doj">
+                                <rect key="frame" x="14" y="190" width="347" height="31"/>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LVw-pQ-6Mz" firstAttribute="top" secondItem="NCS-3l-VWT" secondAttribute="bottom" constant="8" symbolic="YES" id="6mz-aQ-D2C"/>
+                            <constraint firstItem="OpL-Z2-xYZ" firstAttribute="top" secondItem="YDj-9i-Zvr" secondAttribute="bottom" constant="15" id="8NT-Ob-NC7"/>
+                            <constraint firstItem="bEz-wg-ez2" firstAttribute="top" secondItem="LVw-pQ-6Mz" secondAttribute="bottom" constant="8" symbolic="YES" id="C5H-w8-PE7"/>
+                            <constraint firstItem="LVw-pQ-6Mz" firstAttribute="leading" secondItem="T8l-Nl-Doj" secondAttribute="leading" id="CHl-9g-4Es"/>
+                            <constraint firstItem="OpL-Z2-xYZ" firstAttribute="centerX" secondItem="NCS-3l-VWT" secondAttribute="centerX" id="HWf-aI-APB"/>
+                            <constraint firstItem="OpL-Z2-xYZ" firstAttribute="leading" secondItem="LVw-pQ-6Mz" secondAttribute="leading" id="IJq-ym-zYQ"/>
+                            <constraint firstItem="YDj-9i-Zvr" firstAttribute="centerX" secondItem="OpL-Z2-xYZ" secondAttribute="centerX" id="KF0-28-OZo"/>
+                            <constraint firstItem="LVw-pQ-6Mz" firstAttribute="centerX" secondItem="bEz-wg-ez2" secondAttribute="centerX" id="NmK-Hb-cWD"/>
+                            <constraint firstItem="OpL-Z2-xYZ" firstAttribute="leading" secondItem="Tu5-MA-SXN" secondAttribute="leadingMargin" id="Qcc-xt-zT7"/>
+                            <constraint firstItem="OpL-Z2-xYZ" firstAttribute="trailing" secondItem="Tu5-MA-SXN" secondAttribute="trailingMargin" id="SNI-Ls-Nb9"/>
+                            <constraint firstItem="T8l-Nl-Doj" firstAttribute="top" secondItem="bEz-wg-ez2" secondAttribute="bottom" constant="8" symbolic="YES" id="aUs-UK-JzE"/>
+                            <constraint firstItem="LVw-pQ-6Mz" firstAttribute="trailing" secondItem="T8l-Nl-Doj" secondAttribute="trailing" id="dkw-j6-rIl"/>
+                            <constraint firstItem="NCS-3l-VWT" firstAttribute="top" secondItem="OpL-Z2-xYZ" secondAttribute="bottom" constant="8" symbolic="YES" id="g9W-bQ-5Vd"/>
+                            <constraint firstItem="OpL-Z2-xYZ" firstAttribute="trailing" secondItem="LVw-pQ-6Mz" secondAttribute="trailing" id="hXI-pW-QzW"/>
+                            <constraint firstItem="YDj-9i-Zvr" firstAttribute="top" secondItem="b2h-Rg-e8N" secondAttribute="bottom" id="iRB-4e-su8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomInsetsLabel" destination="NCS-3l-VWT" id="EKr-Ru-nFX"/>
+                        <outlet property="bottomInsetsSlider" destination="LVw-pQ-6Mz" id="lhK-Gp-7Bq"/>
+                        <outlet property="contentHeightLabel" destination="bEz-wg-ez2" id="0R0-Wp-HAi"/>
+                        <outlet property="contentHeightSlider" destination="T8l-Nl-Doj" id="zcB-Ze-cj3"/>
+                        <outlet property="topInsetsLabel" destination="YDj-9i-Zvr" id="Oow-y8-QSk"/>
+                        <outlet property="topInsetsSlider" destination="OpL-Z2-xYZ" id="hUj-dF-Dua"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n0R-s7-ruZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-318" y="95"/>
+        </scene>
+    </scenes>
+</document>
