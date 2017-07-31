@@ -11,6 +11,9 @@
 #import <objc/runtime.h>
 #import "TestModel.h"
 
+#define TICK NSDate *startTime = [NSDate date]
+#define TOCK NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
+
 static NSString * const DATABASE_NAME = @"/topic.db";
 
 @interface YLTopicDatabaseManager ()
@@ -25,7 +28,7 @@ static NSString * const DATABASE_NAME = @"/topic.db";
 #pragma mark - initializtion
 
 + (instancetype)sharedManager {
-    __block YLTopicDatabaseManager *manager;
+    static YLTopicDatabaseManager *manager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[YLTopicDatabaseManager alloc] init];
@@ -90,6 +93,7 @@ static NSString * const DATABASE_NAME = @"/topic.db";
 
 - (void)saveModels:(NSArray<id<YLTopicModel>> *)models {
     [self.databaseQueue inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
+        TICK;
         for (id<YLTopicModel> model in models) {
             // https://stackoverflow.com/questions/9400087/fmdb-query-with-dictionary
             NSDictionary *dict = [model dictionaryRepresentation];
@@ -106,6 +110,7 @@ static NSString * const DATABASE_NAME = @"/topic.db";
             NSString *insertSQL = [NSString stringWithFormat:@"REPLACE INTO %@ (%@) VALUES (%@)", tableName, keyString, valueString];
             [db executeUpdate:insertSQL withParameterDictionary:dict];
         }
+        TOCK;
     }];
 }
 
