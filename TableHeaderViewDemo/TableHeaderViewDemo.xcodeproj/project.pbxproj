@@ -12,6 +12,7 @@
 		BB72ED111F37FE3800B2A6EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB72ED0F1F37FE3800B2A6EE /* Main.storyboard */; };
 		BB72ED131F37FE3800B2A6EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB72ED121F37FE3800B2A6EE /* Assets.xcassets */; };
 		BB72ED161F37FE3800B2A6EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB72ED141F37FE3800B2A6EE /* LaunchScreen.storyboard */; };
+		BBDA52B11F5B032B00B575B0 /* Lenna.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCB01CD1F5B005E000595AA /* Lenna.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		BB72ED121F37FE3800B2A6EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB72ED151F37FE3800B2A6EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB72ED171F37FE3800B2A6EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBCB01CD1F5B005E000595AA /* Lenna.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lenna.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		BB72ED0A1F37FE3800B2A6EE /* TableHeaderViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BBCB01CD1F5B005E000595AA /* Lenna.png */,
 				BB72ED0B1F37FE3800B2A6EE /* AppDelegate.swift */,
 				BB72ED0D1F37FE3800B2A6EE /* ViewController.swift */,
 				BB72ED0F1F37FE3800B2A6EE /* Main.storyboard */,
@@ -126,6 +129,7 @@
 			files = (
 				BB72ED161F37FE3800B2A6EE /* LaunchScreen.storyboard in Resources */,
 				BB72ED131F37FE3800B2A6EE /* Assets.xcassets in Resources */,
+				BBDA52B11F5B032B00B575B0 /* Lenna.png in Resources */,
 				BB72ED111F37FE3800B2A6EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +308,7 @@
 				BB72ED1C1F37FE3800B2A6EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
