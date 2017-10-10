@@ -40,20 +40,21 @@ class ViewController: UIViewController {
         do {
             let url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             
-            let directoryURL = url.appendingPathComponent("dd")
+            let directoryURL = url.appendingPathComponent("dd.txt")
             
-            // 创建目录如果 withIntermediateDirectories 为 true，就不用检查目录是否存在，也不会被覆盖
+            // 创建目录如果 withIntermediateDirectories 为 true，就不用检查目录是否存在，也不会被覆盖, 否则会报错
+            // 后缀名不影响
             try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)
+            // 这里有谈到 https://stackoverflow.com/a/6126098/4819236
         } catch {
             print("error")
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func directoryExist(at path: String) -> Bool {
+        var isDirectory: ObjCBool = true
+        let exist = FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory)
+        return exist && isDirectory.boolValue
     }
-
-
 }
 
