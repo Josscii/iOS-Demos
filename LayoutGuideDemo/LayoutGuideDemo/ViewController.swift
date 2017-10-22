@@ -24,9 +24,10 @@ class ViewController: UIViewController {
 //        navigationController?.navigationBar.isTranslucent = false
 //        extendedLayoutIncludesOpaqueBars = true
         edgesForExtendedLayout = []
+//        navigationController?.navigationBar.isTranslucent = false
         
         /*
-         当 bar 为透明时，extendedLayoutIncludesOpaqueBars 不起作用，通过 edgesForExtendedLayout 可以调节各边是否可以延伸到 bar 下面的位置。
+         当 bar 为透明时，extendedLayoutIncludesOpaqueBars 不起作用，通过 edgesForExtendedLayout 可以调节 ViewController 的 rootView 的 frame 的原点，也就是说，如果
          当 bar 不透明时，extendedLayoutIncludesOpaqueBars 和 edgesForExtendedLayout 共同起作用，只有当 extendedLayoutIncludesOpaqueBars 的值为 true，且 edgesForExtendedLayout 的值不为 0 才行。
          而 automaticallyAdjustsScrollViewInsets 是仅针对 viewController 的第一个子视图为 UIScrollView 及其子类的时候才会起作用，在 iOS 11 之前，它调节的是 tableView 的 contentInsets。
          */
@@ -39,13 +40,24 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        edgesForExtendedLayout = []
+//        automaticallyAdjustsScrollViewInsets
+//        topLayoutGuide
+        
+//        edgesForExtendedLayout = []
+        
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+//        tabBarController?.tabBar
+        
+        view.intrinsicContentSize
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        print(tableView.contentInset)
+        print(edgesForExtendedLayout)
+        
+        print(view.bounds)
+        print(view.frame)
     }
 }
 

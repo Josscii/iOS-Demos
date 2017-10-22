@@ -21,11 +21,12 @@ class ViewController: UIViewController {
         button.setTitleColor(.black, for: .normal)
         button.setImage(#imageLiteral(resourceName: "love"), for: .normal)
         
-//        button.contentVerticalAlignment = .top
+        button.contentVerticalAlignment = .top
+        button.contentHorizontalAlignment = .left
 
 //        button.contentEdgeInsets.right = 30
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 30, bottom: 30, right: 0)
-        button.titleEdgeInsets = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 25)
+//        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 30, bottom: 30, right: 0)
+//        button.titleEdgeInsets = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 25)
         
         view.addSubview(button)
         
