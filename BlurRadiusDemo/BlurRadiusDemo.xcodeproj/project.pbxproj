@@ -1,0 +1,331 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BBC5FD2A1F95DA1B004CAFC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5FD291F95DA1B004CAFC2 /* AppDelegate.swift */; };
+		BBC5FD2C1F95DA1B004CAFC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5FD2B1F95DA1B004CAFC2 /* ViewController.swift */; };
+		BBC5FD2F1F95DA1B004CAFC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC5FD2D1F95DA1B004CAFC2 /* Main.storyboard */; };
+		BBC5FD311F95DA1B004CAFC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBC5FD301F95DA1B004CAFC2 /* Assets.xcassets */; };
+		BBC5FD341F95DA1B004CAFC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC5FD321F95DA1B004CAFC2 /* LaunchScreen.storyboard */; };
+		BBC5FD3C1F95DA86004CAFC2 /* Lenna.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC5FD3B1F95DA83004CAFC2 /* Lenna.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BBC5FD261F95DA1B004CAFC2 /* BlurRadiusDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlurRadiusDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBC5FD291F95DA1B004CAFC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BBC5FD2B1F95DA1B004CAFC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BBC5FD2E1F95DA1B004CAFC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BBC5FD301F95DA1B004CAFC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BBC5FD331F95DA1B004CAFC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BBC5FD351F95DA1B004CAFC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBC5FD3B1F95DA83004CAFC2 /* Lenna.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lenna.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BBC5FD231F95DA1B004CAFC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BBC5FD1D1F95DA1B004CAFC2 = {
+			isa = PBXGroup;
+			children = (
+				BBC5FD281F95DA1B004CAFC2 /* BlurRadiusDemo */,
+				BBC5FD271F95DA1B004CAFC2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BBC5FD271F95DA1B004CAFC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBC5FD261F95DA1B004CAFC2 /* BlurRadiusDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBC5FD281F95DA1B004CAFC2 /* BlurRadiusDemo */ = {
+			isa = PBXGroup;
+			children = (
+				BBC5FD3B1F95DA83004CAFC2 /* Lenna.png */,
+				BBC5FD291F95DA1B004CAFC2 /* AppDelegate.swift */,
+				BBC5FD2B1F95DA1B004CAFC2 /* ViewController.swift */,
+				BBC5FD2D1F95DA1B004CAFC2 /* Main.storyboard */,
+				BBC5FD301F95DA1B004CAFC2 /* Assets.xcassets */,
+				BBC5FD321F95DA1B004CAFC2 /* LaunchScreen.storyboard */,
+				BBC5FD351F95DA1B004CAFC2 /* Info.plist */,
+			);
+			path = BlurRadiusDemo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BBC5FD251F95DA1B004CAFC2 /* BlurRadiusDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBC5FD381F95DA1B004CAFC2 /* Build configuration list for PBXNativeTarget "BlurRadiusDemo" */;
+			buildPhases = (
+				BBC5FD221F95DA1B004CAFC2 /* Sources */,
+				BBC5FD231F95DA1B004CAFC2 /* Frameworks */,
+				BBC5FD241F95DA1B004CAFC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BlurRadiusDemo;
+			productName = BlurRadiusDemo;
+			productReference = BBC5FD261F95DA1B004CAFC2 /* BlurRadiusDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BBC5FD1E1F95DA1B004CAFC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = josscii;
+				TargetAttributes = {
+					BBC5FD251F95DA1B004CAFC2 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BBC5FD211F95DA1B004CAFC2 /* Build configuration list for PBXProject "BlurRadiusDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BBC5FD1D1F95DA1B004CAFC2;
+			productRefGroup = BBC5FD271F95DA1B004CAFC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BBC5FD251F95DA1B004CAFC2 /* BlurRadiusDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BBC5FD241F95DA1B004CAFC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC5FD341F95DA1B004CAFC2 /* LaunchScreen.storyboard in Resources */,
+				BBC5FD3C1F95DA86004CAFC2 /* Lenna.png in Resources */,
+				BBC5FD311F95DA1B004CAFC2 /* Assets.xcassets in Resources */,
+				BBC5FD2F1F95DA1B004CAFC2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BBC5FD221F95DA1B004CAFC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC5FD2C1F95DA1B004CAFC2 /* ViewController.swift in Sources */,
+				BBC5FD2A1F95DA1B004CAFC2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BBC5FD2D1F95DA1B004CAFC2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBC5FD2E1F95DA1B004CAFC2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BBC5FD321F95DA1B004CAFC2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBC5FD331F95DA1B004CAFC2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BBC5FD361F95DA1B004CAFC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BBC5FD371F95DA1B004CAFC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BBC5FD391F95DA1B004CAFC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 65XUT4T932;
+				INFOPLIST_FILE = BlurRadiusDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.BlurRadiusDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BBC5FD3A1F95DA1B004CAFC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 65XUT4T932;
+				INFOPLIST_FILE = BlurRadiusDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.BlurRadiusDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BBC5FD211F95DA1B004CAFC2 /* Build configuration list for PBXProject "BlurRadiusDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBC5FD361F95DA1B004CAFC2 /* Debug */,
+				BBC5FD371F95DA1B004CAFC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBC5FD381F95DA1B004CAFC2 /* Build configuration list for PBXNativeTarget "BlurRadiusDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBC5FD391F95DA1B004CAFC2 /* Debug */,
+				BBC5FD3A1F95DA1B004CAFC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BBC5FD1E1F95DA1B004CAFC2 /* Project object */;
+}
