@@ -12,13 +12,14 @@ class SketchLabel: UILabel {
     
     var lineHeight: CGFloat?
     
-    func setText(text: String, lineHeight: CGFloat) {
+    func setText(text: String, lineHeight: CGFloat, fontSize: CGFloat) {
         self.lineHeight = lineHeight
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.minimumLineHeight = lineHeight
         paragraphStyle.maximumLineHeight = lineHeight
-        let attributeString = NSAttributedString(string: text, attributes: [NSAttributedStringKey.paragraphStyle: paragraphStyle])
+        let font = UIFont(name: ".PingFangSC-Regular", size: fontSize)!
+        let attributeString = NSAttributedString(string: text, attributes: [NSAttributedStringKey.paragraphStyle: paragraphStyle, NSAttributedStringKey.font: font])
         attributedText = attributeString
     }
     
@@ -27,18 +28,10 @@ class SketchLabel: UILabel {
         guard let lineHeight = lineHeight else {
             fatalError("lineHeight must have value!")
         }
-        
-        let topInset = (lineHeight - font.pointSize)/2
-        var magicAjust: CGFloat = 0
-        if topInset == 0 {
-            magicAjust = 0
-        } else if topInset == 0.5 {
-            magicAjust = 0.5
-        } else {
-            magicAjust = 1
-        }
-        let insets = UIEdgeInsets.init(top: -topInset + magicAjust, left: 0, bottom: 0, right: 0)
-        
+
+        let topInset = lineHeight - font.pointSize
+        let insets = UIEdgeInsets.init(top: -topInset, left: 0, bottom: 0, right: 0)
+
         super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
     }
 }

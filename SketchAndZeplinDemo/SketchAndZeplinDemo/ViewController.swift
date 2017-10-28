@@ -17,14 +17,13 @@ class ViewController: UIViewController {
         
         let chineseText = "写了这么久的 iOS，基本都是和界面布局打交道，平常在编码的过程中也逐渐积累了一些关于布局的心得，这里做个总结，既是对前面工作的总结，也希望能够给读这篇文章的人一些收获。"
         
-        let fontSize: CGFloat = 13
-        let lineHeight: CGFloat = 15
+        let fontSize: CGFloat = 17
+        let lineHeight: CGFloat = 21
         
         sketchLabel = SketchLabel()
         sketchLabel.numberOfLines = 0
         sketchLabel.backgroundColor = .green
-        sketchLabel.font = UIFont.systemFont(ofSize: fontSize)
-        sketchLabel.setText(text: chineseText, lineHeight: lineHeight)
+        sketchLabel.setText(text: chineseText, lineHeight: lineHeight, fontSize: fontSize)
         view.addSubview(sketchLabel)
         sketchLabel.translatesAutoresizingMaskIntoConstraints = false
         sketchLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 41).isActive = true
