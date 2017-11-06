@@ -14,11 +14,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let tableView = UITableView(frame: view.bounds, style: .grouped)
+        let tableView = UITableView(frame: view.bounds, style: .plain)
         //------------
-        tableView.backgroundColor = UIColor.white
-        tableView.separatorColor = UIColor.white
-        tableView.separatorStyle = .none
+//        tableView.backgroundColor = UIColor.white
+//        tableView.separatorColor = UIColor.white
+//        tableView.separatorStyle = .none
         //------------
         tableView.delegate = self
         tableView.dataSource = self
@@ -29,11 +29,17 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = FixedHeaderFooterView(tableView: tableView, section: section, type: .header)
+        view.backgroundColor = .red
+        return view
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 30
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
