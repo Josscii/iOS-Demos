@@ -63,7 +63,8 @@ extension TableView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        tableView.dataSource = TableView()
-        tableView.reloadData()
+//        tableView.reloadData()
+//        tableView.setNeedsLayout()
 //        tableView.layoutIfNeeded()
 //        DispatchQueue.main.async {
             print("test")
