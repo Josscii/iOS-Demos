@@ -8,7 +8,21 @@
 
 import UIKit
 
+extension ViewController2: Reusable {
+    var reuseIdentifier: String {
+        get {
+            return _reuseIdentifier
+        }
+        
+        set {
+            _reuseIdentifier = newValue
+        }
+    }
+}
+
 class ViewController2: UIViewController {
+    
+    var _reuseIdentifier: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()

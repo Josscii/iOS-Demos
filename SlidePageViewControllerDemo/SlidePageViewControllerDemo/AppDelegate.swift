@@ -17,16 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let viewController = ViewController2()
+        viewController.reuseIdentifier = "1"
         viewController.view.backgroundColor = .red
-        viewController.view.isUserInteractionEnabled = false
         let viewController2 = ViewController2()
+        viewController2.reuseIdentifier = "2"
         viewController2.view.backgroundColor = .yellow
         let viewController3 = ViewController2()
+        viewController3.reuseIdentifier = "3"
         viewController3.view.backgroundColor = .blue
         let viewController4 = ViewController2()
+        viewController4.reuseIdentifier = "4"
         viewController4.view.backgroundColor = .brown
         
-        let slidePageViewController = SlidePageViewController()
+        let slidePageViewController = CollectionPageViewController()
         slidePageViewController.viewControllers = [viewController, viewController2, viewController3, viewController4]
         slidePageViewController.view.backgroundColor = .white
         

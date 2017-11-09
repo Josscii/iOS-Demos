@@ -13,6 +13,7 @@
 		BB3EA01D1FB2F6D3002B9606 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB3EA01C1FB2F6D3002B9606 /* Assets.xcassets */; };
 		BB3EA0201FB2F6D3002B9606 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3EA01E1FB2F6D3002B9606 /* LaunchScreen.storyboard */; };
 		BB3EA0281FB2F6E9002B9606 /* SlidePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3EA0271FB2F6E9002B9606 /* SlidePageViewController.swift */; };
+		BBE2C8B71FB405C70035BFB7 /* CollectionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE2C8B61FB405C70035BFB7 /* CollectionPageViewController.swift */; };
 		BBE340361FB30B54008A392F /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE340351FB30B54008A392F /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		BB3EA01F1FB2F6D3002B9606 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB3EA0211FB2F6D3002B9606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB3EA0271FB2F6E9002B9606 /* SlidePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidePageViewController.swift; sourceTree = "<group>"; };
+		BBE2C8B61FB405C70035BFB7 /* CollectionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPageViewController.swift; sourceTree = "<group>"; };
 		BBE340351FB30B54008A392F /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 				BB3EA0211FB2F6D3002B9606 /* Info.plist */,
 				BB3EA0271FB2F6E9002B9606 /* SlidePageViewController.swift */,
 				BBE340351FB30B54008A392F /* ViewController2.swift */,
+				BBE2C8B61FB405C70035BFB7 /* CollectionPageViewController.swift */,
 			);
 			path = SlidePageViewControllerDemo;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				BB3EA0181FB2F6D3002B9606 /* ViewController.swift in Sources */,
 				BBE340361FB30B54008A392F /* ViewController2.swift in Sources */,
 				BB3EA0281FB2F6E9002B9606 /* SlidePageViewController.swift in Sources */,
+				BBE2C8B71FB405C70035BFB7 /* CollectionPageViewController.swift in Sources */,
 				BB3EA0161FB2F6D3002B9606 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

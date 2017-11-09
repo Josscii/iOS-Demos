@@ -53,6 +53,8 @@ class SlidePageViewController: UIViewController {
         innerScrollView?.bounces = false
         innerScrollView?.delegate = self
         innerScrollView?.contentSize = CGSize(width: view.bounds.width * CGFloat(viewControllers.count), height: view.bounds.height)
+        innerScrollView?.panGestureRecognizer.maximumNumberOfTouches = 1
+//        innerScrollView?.backgroundColor = .green
         view.addSubview(innerScrollView!)
         
         add(asChildViewController: viewControllers[0])
@@ -61,13 +63,13 @@ class SlidePageViewController: UIViewController {
 
 extension SlidePageViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let contentOffsetX = scrollView.contentOffset.x
-        let currentIndex = Int(ceil(contentOffsetX / view.bounds.width))
-        for i in 0 ..< viewControllers!.count {
-            if i != currentIndex {
-                remove(asChildViewController: viewControllers![i])
-            }
-        }
+//        let contentOffsetX = scrollView.contentOffset.x
+//        let currentIndex = Int(ceil(contentOffsetX / view.bounds.width))
+//        for i in 0 ..< viewControllers!.count {
+//            if i != currentIndex {
+//                remove(asChildViewController: viewControllers![i])
+//            }
+//        }
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
@@ -77,8 +79,9 @@ extension SlidePageViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffsetX = scrollView.contentOffset.x
         let panGesture = scrollView.panGestureRecognizer
+        let translation = panGesture.translation(in: scrollView)
         let velocity = panGesture.velocity(in: scrollView)
-        if velocity.x < 0 {
+        if velocity.x < 0 || translation.x < 0 {
             let addIndex = min(viewControllers!.count-1, Int(ceil(contentOffsetX / view.bounds.width)))
             add(asChildViewController: viewControllers![addIndex])
             
@@ -86,7 +89,7 @@ extension SlidePageViewController: UIScrollViewDelegate {
             if removeIndex >= 0 {
                 remove(asChildViewController: viewControllers![removeIndex])
             }
-        } else if velocity.x > 0 {
+        } else if velocity.x > 0 || translation.x > 0 {
             let addIndex = max(0, Int(floor(contentOffsetX / view.bounds.width)))
             add(asChildViewController: viewControllers![addIndex])
             
