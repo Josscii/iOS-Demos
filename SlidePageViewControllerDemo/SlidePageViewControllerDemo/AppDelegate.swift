@@ -12,10 +12,28 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let viewController = ViewController2()
+        viewController.view.backgroundColor = .red
+        viewController.view.isUserInteractionEnabled = false
+        let viewController2 = ViewController2()
+        viewController2.view.backgroundColor = .yellow
+        let viewController3 = ViewController2()
+        viewController3.view.backgroundColor = .blue
+        let viewController4 = ViewController2()
+        viewController4.view.backgroundColor = .brown
+        
+        let slidePageViewController = SlidePageViewController()
+        slidePageViewController.viewControllers = [viewController, viewController2, viewController3, viewController4]
+        slidePageViewController.view.backgroundColor = .white
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = slidePageViewController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

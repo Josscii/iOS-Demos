@@ -55,12 +55,7 @@ class SlidePageViewController: UIViewController {
         innerScrollView?.contentSize = CGSize(width: view.bounds.width * CGFloat(viewControllers.count), height: view.bounds.height)
         view.addSubview(innerScrollView!)
         
-        let barbuttonitem = UIBarButtonItem(title: "select", style: .plain, target: self, action: #selector(selecteIndex))
-        navigationItem.rightBarButtonItem = barbuttonitem
-    }
-    
-    @objc func selecteIndex() {
-        selectedIndex = 3
+        add(asChildViewController: viewControllers[0])
     }
 }
 
@@ -76,7 +71,7 @@ extension SlidePageViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        
+
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -86,16 +81,24 @@ extension SlidePageViewController: UIScrollViewDelegate {
         if velocity.x < 0 {
             let addIndex = min(viewControllers!.count-1, Int(ceil(contentOffsetX / view.bounds.width)))
             add(asChildViewController: viewControllers![addIndex])
+            
+            let removeIndex = Int(floor(contentOffsetX / view.bounds.width))-1
+            if removeIndex >= 0 {
+                remove(asChildViewController: viewControllers![removeIndex])
+            }
         } else if velocity.x > 0 {
             let addIndex = max(0, Int(floor(contentOffsetX / view.bounds.width)))
             add(asChildViewController: viewControllers![addIndex])
+            
+            let removeIndex = Int(ceil(contentOffsetX / view.bounds.width))+1
+            if removeIndex < viewControllers!.count {
+                remove(asChildViewController: viewControllers![removeIndex])
+            }
         } else {
             if childViewControllers.count == 0 {
                 add(asChildViewController: viewControllers![0])
             }
         }
-        
-        let visibleRect = CGRect(x: scrollView.contentOffset.x, y: 0, width: view.bounds.width, height: view.bounds.height)
     }
 }
 
