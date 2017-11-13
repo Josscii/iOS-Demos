@@ -12,6 +12,15 @@ protocol Reusable {
     var reuseIdentifier: String { get }
 }
 
+protocol CollectionPageSegmentViewDelegate: class  {
+    func customTransitionStyle(leftItem: UIView, rightItem: UIView, progress: CGFloat)
+    func didSelect(item: UIView, index: Int)
+}
+
+struct SegmentItem {
+    var title: String
+}
+
 class CollectionPageSegmentView: UIView {
     var indicator: UIView!
     var collectionView: UICollectionView!
@@ -66,6 +75,8 @@ class CollectionPageSegmentView: UIView {
             fromCell?.backgroundColor = .white
         }
     }
+    
+    weak var delegate: CollectionPageSegmentViewDelegate?
 }
 
 extension CollectionPageSegmentView {
