@@ -23,6 +23,12 @@ class CacheObject: NSObject, NSCoding {
     }
     
     func encode(with aCoder: NSCoder) {
+        
+        // https://stackoverflow.com/a/25805619/4819236
+        guard value is NSObject && value is NSCoding else {
+            fatalError("value must a subclass of `NSObject` and comforms to `NSCoding` protocol")
+        }
+        
         aCoder.encode(value, forKey: "value")
         aCoder.encode(expireDate, forKey: "expiredDate")
     }
@@ -59,6 +65,7 @@ class ArchiveCache {
         // get memory cache
         if let memoryObject = memoryCache.object(forKey: key as NSString) {
             if now > memoryObject.expireDate {
+                delete(key: key)
                 return nil
             } else {
                 return memoryObject.value
@@ -69,6 +76,7 @@ class ArchiveCache {
         let cacheURL = cacheBaseURL.appendingPathComponent("\(key).plist")
         if let diskObject = NSKeyedUnarchiver.unarchiveObject(withFile: cacheURL.path) as? CacheObject {
             if now > diskObject.expireDate {
+                delete(key: key)
                 return nil
             } else {
                 return diskObject.value
@@ -77,6 +85,19 @@ class ArchiveCache {
         
         // nothing found
         return nil
+    }
+    
+    func delete(key: String) {
+        // delete memory cache
+        memoryCache.removeObject(forKey: key as NSString)
+        
+        // delete disk cache
+        let cacheURL = cacheBaseURL.appendingPathComponent("\(key).plist")
+        do {
+            try FileManager.default.removeItem(at: cacheURL)
+        } catch _ {
+            print("delete disk cache failed for key: \(key)")
+        }
     }
 }
 
