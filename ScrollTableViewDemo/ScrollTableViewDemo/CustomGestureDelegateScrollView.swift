@@ -22,7 +22,7 @@ class CustomTableView: UITableView, UIGestureRecognizerDelegate {
         self.delegate = self
         self.dataSource = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(shouldResetOffset), name: NSNotification.Name.init("test"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(shouldResetOffset), name: NSNotification.Name.init("test"), object: nil)
     }
     
     @objc func shouldResetOffset() {
@@ -42,7 +42,7 @@ class CustomTableView: UITableView, UIGestureRecognizerDelegate {
 
         return false
     }
-    
+
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if let scrollView = otherGestureRecognizer.view as? UIScrollView,
             let superView = superview,
@@ -68,7 +68,8 @@ class CustomTableView: UITableView, UIGestureRecognizerDelegate {
         }
         
         if !shouldScroll {
-            NotificationCenter.default.post(name: NSNotification.Name.init("test"), object: nil)
+//            NotificationCenter.default.post(name: NSNotification.Name.init("test"), object: nil)
+            contentOffset = .zero
             showsVerticalScrollIndicator = false
         } else {
             showsVerticalScrollIndicator = true

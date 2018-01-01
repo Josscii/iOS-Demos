@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB4347EE1FC95E2300CF7C47 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4347ED1FC95E2300CF7C47 /* Aspects.m */; };
 		BB87A05F1F807CE100B164E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87A05E1F807CE100B164E2 /* AppDelegate.swift */; };
 		BB87A0611F807CE100B164E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87A0601F807CE100B164E2 /* ViewController.swift */; };
 		BB87A0641F807CE100B164E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB87A0621F807CE100B164E2 /* Main.storyboard */; };
@@ -14,9 +15,15 @@
 		BB87A0691F807CE100B164E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB87A0671F807CE100B164E2 /* LaunchScreen.storyboard */; };
 		BB87A0711F808C7300B164E2 /* CustomGestureDelegateScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87A0701F808C7300B164E2 /* CustomGestureDelegateScrollView.swift */; };
 		BB87A0731F80E4E600B164E2 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87A0721F80E4E600B164E2 /* ViewController2.swift */; };
+		BBA6C2E01FC474A600F57028 /* SyncScrollViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA6C2DF1FC474A600F57028 /* SyncScrollViewManager.swift */; };
+		BBA6C2E21FC478C200F57028 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA6C2E11FC478C200F57028 /* ViewController3.swift */; };
+		BBF25A641FCAA40700F52046 /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF25A631FCAA40700F52046 /* ViewController4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB4347EB1FC95E2200CF7C47 /* ScrollTableViewDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScrollTableViewDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		BB4347EC1FC95E2300CF7C47 /* Aspects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		BB4347ED1FC95E2300CF7C47 /* Aspects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		BB87A05B1F807CE100B164E2 /* ScrollTableViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollTableViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB87A05E1F807CE100B164E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB87A0601F807CE100B164E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +33,9 @@
 		BB87A06A1F807CE100B164E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB87A0701F808C7300B164E2 /* CustomGestureDelegateScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGestureDelegateScrollView.swift; sourceTree = "<group>"; };
 		BB87A0721F80E4E600B164E2 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		BBA6C2DF1FC474A600F57028 /* SyncScrollViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncScrollViewManager.swift; sourceTree = "<group>"; };
+		BBA6C2E11FC478C200F57028 /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		BBF25A631FCAA40700F52046 /* ViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,8 @@
 		BB87A05D1F807CE100B164E2 /* ScrollTableViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BB4347EC1FC95E2300CF7C47 /* Aspects.h */,
+				BB4347ED1FC95E2300CF7C47 /* Aspects.m */,
 				BB87A05E1F807CE100B164E2 /* AppDelegate.swift */,
 				BB87A0601F807CE100B164E2 /* ViewController.swift */,
 				BB87A0621F807CE100B164E2 /* Main.storyboard */,
@@ -66,6 +78,10 @@
 				BB87A06A1F807CE100B164E2 /* Info.plist */,
 				BB87A0701F808C7300B164E2 /* CustomGestureDelegateScrollView.swift */,
 				BB87A0721F80E4E600B164E2 /* ViewController2.swift */,
+				BBA6C2DF1FC474A600F57028 /* SyncScrollViewManager.swift */,
+				BBA6C2E11FC478C200F57028 /* ViewController3.swift */,
+				BB4347EB1FC95E2200CF7C47 /* ScrollTableViewDemo-Bridging-Header.h */,
+				BBF25A631FCAA40700F52046 /* ViewController4.swift */,
 			);
 			path = ScrollTableViewDemo;
 			sourceTree = "<group>";
@@ -102,6 +118,7 @@
 				TargetAttributes = {
 					BB87A05A1F807CE100B164E2 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -143,9 +160,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB87A0711F808C7300B164E2 /* CustomGestureDelegateScrollView.swift in Sources */,
+				BB4347EE1FC95E2300CF7C47 /* Aspects.m in Sources */,
 				BB87A0731F80E4E600B164E2 /* ViewController2.swift in Sources */,
+				BBF25A641FCAA40700F52046 /* ViewController4.swift in Sources */,
+				BBA6C2E21FC478C200F57028 /* ViewController3.swift in Sources */,
 				BB87A0611F807CE100B164E2 /* ViewController.swift in Sources */,
 				BB87A05F1F807CE100B164E2 /* AppDelegate.swift in Sources */,
+				BBA6C2E01FC474A600F57028 /* SyncScrollViewManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,12 +303,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q3X7AW5CU;
 				INFOPLIST_FILE = ScrollTableViewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.WeiPro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ScrollTableViewDemo/ScrollTableViewDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -297,12 +321,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q3X7AW5CU;
 				INFOPLIST_FILE = ScrollTableViewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.WeiPro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ScrollTableViewDemo/ScrollTableViewDemo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

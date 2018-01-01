@@ -8,6 +8,8 @@
 
 import UIKit
 
+//https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/CreatingViews/CreatingViews.html#//apple_ref/doc/uid/TP40009503-CH5-SW1
+
 enum DragType {
     case resize
     case pan
@@ -37,9 +39,11 @@ class ViewController: UIViewController {
         resizeAreaView.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
         superView.addSubview(resizeAreaView)
         
-        autoReizingView = UIView(frame: CGRect(x: 200-40, y: 0, width: 40, height: 40))
+        autoReizingView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        autoReizingView.center = CGPoint(x: 100, y: 100)
         autoReizingView.backgroundColor = .yellow
-        autoReizingView.autoresizingMask = [.flexibleBottomMargin, .flexibleLeftMargin, .flexibleWidth]
+        // When you configure a view that has more than one flexible attribute along a single axis, UIKit distributes any size changes evenly among the corresponding spaces.
+        autoReizingView.autoresizingMask = [.flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin]
         superView.addSubview(autoReizingView)
     }
     
