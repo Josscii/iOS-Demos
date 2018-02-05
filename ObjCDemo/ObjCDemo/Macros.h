@@ -22,6 +22,18 @@
 #define ISArray(x) [x isKindOfClass:[NSArray class]]
 #define ISString(x) [x isKindOfClass:[NSString class]]
 
+static inline BOOL isEmpty(id x) {
+    if (x == nil) return YES;
+    if ([x isEqual:[NSNull null]]) return YES;
+    if ([x respondsToSelector:@selector(count)]) return [x performSelector:@selector(count)] == 0;
+    if ([x respondsToSelector:@selector(length)]) return [x performSelector:@selector(length)] == 0;
+    return NO;
+}
+
+static inline BOOL isPresent(id x) {
+    return !isEmpty(x);
+}
+
 #pragma mark -
 #pragma mark iOS Version
 

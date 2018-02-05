@@ -15,7 +15,7 @@ int main(int argc, const char * argv[]) {
         NSLog(@"Hello, World!");
         
         NSString *str = [NSDictionary dictionary];
-        if (ISString(str) && str.length) {
+        if (ISString(str) && isPresent(str)) {
             NSLog(@"hhhh");
         }
         
