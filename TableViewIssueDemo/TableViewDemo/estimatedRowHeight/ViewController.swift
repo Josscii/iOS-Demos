@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*
+ 测试 tableView 算高、加载 cell 和 estimatedRowHeight 的关系
+ */
+
 class ViewController: UIViewController {
     
     var tableView: UITableView!

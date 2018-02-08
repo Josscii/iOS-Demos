@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*
+ 测试 beginUpdates / endUpdates 和 tableView reload/delete/insert 的关系
+ */
+
 class ViewController2: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -56,6 +60,12 @@ class ViewController2: UIViewController {
 //        tableView.insertRows(at: [IndexPath.init(row: 1, section: 0)], with: .automatic)
 //        tableView.deleteRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
 //        tableView.endUpdates()
+        
+        /*
+         
+         beginUpdates 和 endUpdates 和 tableView 的动画无关，只是用于将对 tableView 的批量修改 patch
+ 
+         */
     }
 }
 
