@@ -9,10 +9,16 @@
 import UIKit
 
 class SecondViewController: UIViewController {
+    
+    weak var associatedNavigationBar: UINavigationBar?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.interactivePopGestureRecognizer?.addTarget(self, action: #selector(didPan(gesture:)))
+        
+        // navigationController 在手势的回调中可能已经不存在
+        associatedNavigationBar = navigationController?.navigationBar
     }
     
     @objc func didPan(gesture: UIScreenEdgePanGestureRecognizer) {
@@ -23,25 +29,33 @@ class SecondViewController: UIViewController {
         let naviTotal: CGFloat = 88
         let currentTranslation = max(naviTotal - translation/total * naviTotal, 0);
         
-        self.navigationController?.navigationBar.transform = CGAffineTransform(translationX: 0, y: -currentTranslation)
+        associatedNavigationBar?.transform = CGAffineTransform(translationX: 0, y: -currentTranslation)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBar.animateSlide(up: true)
+        navigationController?.navigationBar.animateSlideUp()
     }
 }
 
 
 extension UINavigationBar {
-    func animateSlide(up: Bool) {
-        UIView.animate(withDuration: 0.25) {
-            if up {
-                self.transform = CGAffineTransform(translationX: 0, y: -88)
-            } else {
-                self.transform = .identity
-            }
+    func animateSlideUp() {
+        let currentY = self.transform.ty;
+        let duration: Double = 0.25 - Double((currentY/(-88)) * 0.25)
+        
+        UIView.animate(withDuration: duration) {
+            self.transform = CGAffineTransform(translationX: 0, y: -88)
+        }
+    }
+    
+    func animateIdentity() {
+        let currentY = self.transform.ty;
+        let duration: Double = 0.25 - Double((currentY/(-88)) * 0.25)
+        
+        UIView.animate(withDuration: duration) {
+            self.transform = .identity
         }
     }
 }
