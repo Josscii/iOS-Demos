@@ -14,11 +14,10 @@ int main(int argc, const char * argv[]) {
         // insert code here...
         NSLog(@"Hello, World!");
         
-        NSString *str = [NSDictionary dictionary];
-        if (ISString(str) && isPresent(str)) {
-            NSLog(@"hhhh");
+        NSDictionary *str;
+        if (ISDictionary(str)) {
+            NSLog(@"-----");
         }
-        
     }
     return 0;
 }

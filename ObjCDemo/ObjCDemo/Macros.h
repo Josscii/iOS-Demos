@@ -12,7 +12,8 @@
 #pragma mark -
 #pragma mark project convience
 
-#define APPDELEGATE ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+#define app_delegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+#define app_window ((UIWindow *)[[UIApplication sharedApplication] delegate] window])
 
 #pragma mark -
 #pragma mark safe surance
