@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*
+ 自定义 leftBarButtonItem，缺点很明显，滑动返回会失效，不建议使用
+ */
+
 class ViewController2: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
@@ -34,6 +38,6 @@ class ViewController2: UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.interactivePopGestureRecognizer?.delegate = self as UIGestureRecognizerDelegate
+//        navigationController?.interactivePopGestureRecognizer?.delegate = self as UIGestureRecognizerDelegate
     }
 }

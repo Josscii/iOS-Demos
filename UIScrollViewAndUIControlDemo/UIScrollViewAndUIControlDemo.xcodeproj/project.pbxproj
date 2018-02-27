@@ -7,27 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BB6771E52028205D00D0023C /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6771E42028205D00D0023C /* Toast.swift */; };
-		BBB9AD5D1FAEE70A00342D5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9AD5C1FAEE70A00342D5A /* AppDelegate.swift */; };
-		BBB9AD5F1FAEE70A00342D5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9AD5E1FAEE70A00342D5A /* ViewController.swift */; };
-		BBB9AD621FAEE70A00342D5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB9AD601FAEE70A00342D5A /* Main.storyboard */; };
-		BBB9AD641FAEE70A00342D5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBB9AD631FAEE70A00342D5A /* Assets.xcassets */; };
-		BBB9AD671FAEE70A00342D5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB9AD651FAEE70A00342D5A /* LaunchScreen.storyboard */; };
+		BB6D0CB7202D9F5600C31065 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0CB6202D9F5600C31065 /* AppDelegate.swift */; };
+		BB6D0CB9202D9F5600C31065 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0CB8202D9F5600C31065 /* ViewController.swift */; };
+		BB6D0CBC202D9F5600C31065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6D0CBA202D9F5600C31065 /* Main.storyboard */; };
+		BB6D0CBE202D9F5600C31065 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB6D0CBD202D9F5600C31065 /* Assets.xcassets */; };
+		BB6D0CC1202D9F5600C31065 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6D0CBF202D9F5600C31065 /* LaunchScreen.storyboard */; };
+		BB6D0CCB202DA67000C31065 /* UIScrollView+FixUIControlTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0CCA202DA67000C31065 /* UIScrollView+FixUIControlTouch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BB6771E42028205D00D0023C /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		BBB9AD591FAEE70A00342D5A /* ToastAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToastAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBB9AD5C1FAEE70A00342D5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BBB9AD5E1FAEE70A00342D5A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BBB9AD611FAEE70A00342D5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BBB9AD631FAEE70A00342D5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BBB9AD661FAEE70A00342D5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BBB9AD681FAEE70A00342D5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB6D0CB3202D9F5600C31065 /* UIScrollViewAndUIControlDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIScrollViewAndUIControlDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB6D0CB6202D9F5600C31065 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BB6D0CB8202D9F5600C31065 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BB6D0CBB202D9F5600C31065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BB6D0CBD202D9F5600C31065 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BB6D0CC0202D9F5600C31065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BB6D0CC2202D9F5600C31065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB6D0CC8202DA66F00C31065 /* UIScrollViewAndUIControlDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollViewAndUIControlDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		BB6D0CC9202DA67000C31065 /* UIScrollView+FixUIControlTouch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+FixUIControlTouch.h"; sourceTree = "<group>"; };
+		BB6D0CCA202DA67000C31065 /* UIScrollView+FixUIControlTouch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+FixUIControlTouch.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BBB9AD561FAEE70A00342D5A /* Frameworks */ = {
+		BB6D0CB0202D9F5600C31065 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,73 +39,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BBB9AD501FAEE70A00342D5A = {
+		BB6D0CAA202D9F5600C31065 = {
 			isa = PBXGroup;
 			children = (
-				BBB9AD5B1FAEE70A00342D5A /* ToastAnimationDemo */,
-				BBB9AD5A1FAEE70A00342D5A /* Products */,
+				BB6D0CB5202D9F5600C31065 /* UIScrollViewAndUIControlDemo */,
+				BB6D0CB4202D9F5600C31065 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		BBB9AD5A1FAEE70A00342D5A /* Products */ = {
+		BB6D0CB4202D9F5600C31065 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BBB9AD591FAEE70A00342D5A /* ToastAnimationDemo.app */,
+				BB6D0CB3202D9F5600C31065 /* UIScrollViewAndUIControlDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BBB9AD5B1FAEE70A00342D5A /* ToastAnimationDemo */ = {
+		BB6D0CB5202D9F5600C31065 /* UIScrollViewAndUIControlDemo */ = {
 			isa = PBXGroup;
 			children = (
-				BBB9AD5C1FAEE70A00342D5A /* AppDelegate.swift */,
-				BBB9AD5E1FAEE70A00342D5A /* ViewController.swift */,
-				BBB9AD601FAEE70A00342D5A /* Main.storyboard */,
-				BBB9AD631FAEE70A00342D5A /* Assets.xcassets */,
-				BBB9AD651FAEE70A00342D5A /* LaunchScreen.storyboard */,
-				BBB9AD681FAEE70A00342D5A /* Info.plist */,
-				BB6771E42028205D00D0023C /* Toast.swift */,
+				BB6D0CB6202D9F5600C31065 /* AppDelegate.swift */,
+				BB6D0CB8202D9F5600C31065 /* ViewController.swift */,
+				BB6D0CBA202D9F5600C31065 /* Main.storyboard */,
+				BB6D0CBD202D9F5600C31065 /* Assets.xcassets */,
+				BB6D0CBF202D9F5600C31065 /* LaunchScreen.storyboard */,
+				BB6D0CC2202D9F5600C31065 /* Info.plist */,
+				BB6D0CC9202DA67000C31065 /* UIScrollView+FixUIControlTouch.h */,
+				BB6D0CCA202DA67000C31065 /* UIScrollView+FixUIControlTouch.m */,
+				BB6D0CC8202DA66F00C31065 /* UIScrollViewAndUIControlDemo-Bridging-Header.h */,
 			);
-			path = ToastAnimationDemo;
+			path = UIScrollViewAndUIControlDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BBB9AD581FAEE70A00342D5A /* ToastAnimationDemo */ = {
+		BB6D0CB2202D9F5600C31065 /* UIScrollViewAndUIControlDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BBB9AD6B1FAEE70A00342D5A /* Build configuration list for PBXNativeTarget "ToastAnimationDemo" */;
+			buildConfigurationList = BB6D0CC5202D9F5600C31065 /* Build configuration list for PBXNativeTarget "UIScrollViewAndUIControlDemo" */;
 			buildPhases = (
-				BBB9AD551FAEE70A00342D5A /* Sources */,
-				BBB9AD561FAEE70A00342D5A /* Frameworks */,
-				BBB9AD571FAEE70A00342D5A /* Resources */,
+				BB6D0CAF202D9F5600C31065 /* Sources */,
+				BB6D0CB0202D9F5600C31065 /* Frameworks */,
+				BB6D0CB1202D9F5600C31065 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ToastAnimationDemo;
-			productName = ToastAnimationDemo;
-			productReference = BBB9AD591FAEE70A00342D5A /* ToastAnimationDemo.app */;
+			name = UIScrollViewAndUIControlDemo;
+			productName = UIScrollViewAndUIControlDemo;
+			productReference = BB6D0CB3202D9F5600C31065 /* UIScrollViewAndUIControlDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BBB9AD511FAEE70A00342D5A /* Project object */ = {
+		BB6D0CAB202D9F5600C31065 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = Josscii;
+				ORGANIZATIONNAME = josscii;
 				TargetAttributes = {
-					BBB9AD581FAEE70A00342D5A = {
+					BB6D0CB2202D9F5600C31065 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = BBB9AD541FAEE70A00342D5A /* Build configuration list for PBXProject "ToastAnimationDemo" */;
+			buildConfigurationList = BB6D0CAE202D9F5600C31065 /* Build configuration list for PBXProject "UIScrollViewAndUIControlDemo" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -111,55 +116,55 @@
 				en,
 				Base,
 			);
-			mainGroup = BBB9AD501FAEE70A00342D5A;
-			productRefGroup = BBB9AD5A1FAEE70A00342D5A /* Products */;
+			mainGroup = BB6D0CAA202D9F5600C31065;
+			productRefGroup = BB6D0CB4202D9F5600C31065 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BBB9AD581FAEE70A00342D5A /* ToastAnimationDemo */,
+				BB6D0CB2202D9F5600C31065 /* UIScrollViewAndUIControlDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BBB9AD571FAEE70A00342D5A /* Resources */ = {
+		BB6D0CB1202D9F5600C31065 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBB9AD671FAEE70A00342D5A /* LaunchScreen.storyboard in Resources */,
-				BBB9AD641FAEE70A00342D5A /* Assets.xcassets in Resources */,
-				BBB9AD621FAEE70A00342D5A /* Main.storyboard in Resources */,
+				BB6D0CC1202D9F5600C31065 /* LaunchScreen.storyboard in Resources */,
+				BB6D0CBE202D9F5600C31065 /* Assets.xcassets in Resources */,
+				BB6D0CBC202D9F5600C31065 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BBB9AD551FAEE70A00342D5A /* Sources */ = {
+		BB6D0CAF202D9F5600C31065 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBB9AD5F1FAEE70A00342D5A /* ViewController.swift in Sources */,
-				BB6771E52028205D00D0023C /* Toast.swift in Sources */,
-				BBB9AD5D1FAEE70A00342D5A /* AppDelegate.swift in Sources */,
+				BB6D0CB9202D9F5600C31065 /* ViewController.swift in Sources */,
+				BB6D0CB7202D9F5600C31065 /* AppDelegate.swift in Sources */,
+				BB6D0CCB202DA67000C31065 /* UIScrollView+FixUIControlTouch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BBB9AD601FAEE70A00342D5A /* Main.storyboard */ = {
+		BB6D0CBA202D9F5600C31065 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BBB9AD611FAEE70A00342D5A /* Base */,
+				BB6D0CBB202D9F5600C31065 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		BBB9AD651FAEE70A00342D5A /* LaunchScreen.storyboard */ = {
+		BB6D0CBF202D9F5600C31065 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BBB9AD661FAEE70A00342D5A /* Base */,
+				BB6D0CC0202D9F5600C31065 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -167,7 +172,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		BBB9AD691FAEE70A00342D5A /* Debug */ = {
+		BB6D0CC3202D9F5600C31065 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -224,7 +229,7 @@
 			};
 			name = Debug;
 		};
-		BBB9AD6A1FAEE70A00342D5A /* Release */ = {
+		BB6D0CC4202D9F5600C31065 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -274,31 +279,36 @@
 			};
 			name = Release;
 		};
-		BBB9AD6C1FAEE70A00342D5A /* Debug */ = {
+		BB6D0CC6202D9F5600C31065 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q3X7AW5CU;
-				INFOPLIST_FILE = ToastAnimationDemo/Info.plist;
+				INFOPLIST_FILE = UIScrollViewAndUIControlDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.ToastAnimationDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.UIScrollViewAndUIControlDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UIScrollViewAndUIControlDemo/UIScrollViewAndUIControlDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		BBB9AD6D1FAEE70A00342D5A /* Release */ = {
+		BB6D0CC7202D9F5600C31065 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q3X7AW5CU;
-				INFOPLIST_FILE = ToastAnimationDemo/Info.plist;
+				INFOPLIST_FILE = UIScrollViewAndUIControlDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.ToastAnimationDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.UIScrollViewAndUIControlDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UIScrollViewAndUIControlDemo/UIScrollViewAndUIControlDemo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -307,25 +317,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BBB9AD541FAEE70A00342D5A /* Build configuration list for PBXProject "ToastAnimationDemo" */ = {
+		BB6D0CAE202D9F5600C31065 /* Build configuration list for PBXProject "UIScrollViewAndUIControlDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BBB9AD691FAEE70A00342D5A /* Debug */,
-				BBB9AD6A1FAEE70A00342D5A /* Release */,
+				BB6D0CC3202D9F5600C31065 /* Debug */,
+				BB6D0CC4202D9F5600C31065 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BBB9AD6B1FAEE70A00342D5A /* Build configuration list for PBXNativeTarget "ToastAnimationDemo" */ = {
+		BB6D0CC5202D9F5600C31065 /* Build configuration list for PBXNativeTarget "UIScrollViewAndUIControlDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BBB9AD6C1FAEE70A00342D5A /* Debug */,
-				BBB9AD6D1FAEE70A00342D5A /* Release */,
+				BB6D0CC6202D9F5600C31065 /* Debug */,
+				BB6D0CC7202D9F5600C31065 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = BBB9AD511FAEE70A00342D5A /* Project object */;
+	rootObject = BB6D0CAB202D9F5600C31065 /* Project object */;
 }

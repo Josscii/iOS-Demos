@@ -7,27 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BB6771E52028205D00D0023C /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6771E42028205D00D0023C /* Toast.swift */; };
-		BBB9AD5D1FAEE70A00342D5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9AD5C1FAEE70A00342D5A /* AppDelegate.swift */; };
-		BBB9AD5F1FAEE70A00342D5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9AD5E1FAEE70A00342D5A /* ViewController.swift */; };
-		BBB9AD621FAEE70A00342D5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB9AD601FAEE70A00342D5A /* Main.storyboard */; };
-		BBB9AD641FAEE70A00342D5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBB9AD631FAEE70A00342D5A /* Assets.xcassets */; };
-		BBB9AD671FAEE70A00342D5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB9AD651FAEE70A00342D5A /* LaunchScreen.storyboard */; };
+		BB38DD99202FECC100BFFB0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38DD98202FECC100BFFB0F /* AppDelegate.swift */; };
+		BB38DD9B202FECC100BFFB0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38DD9A202FECC100BFFB0F /* ViewController.swift */; };
+		BB38DD9E202FECC100BFFB0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB38DD9C202FECC100BFFB0F /* Main.storyboard */; };
+		BB38DDA0202FECC100BFFB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB38DD9F202FECC100BFFB0F /* Assets.xcassets */; };
+		BB38DDA3202FECC100BFFB0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB38DDA1202FECC100BFFB0F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BB6771E42028205D00D0023C /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		BBB9AD591FAEE70A00342D5A /* ToastAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToastAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBB9AD5C1FAEE70A00342D5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BBB9AD5E1FAEE70A00342D5A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BBB9AD611FAEE70A00342D5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BBB9AD631FAEE70A00342D5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BBB9AD661FAEE70A00342D5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BBB9AD681FAEE70A00342D5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB38DD95202FECC100BFFB0F /* TabBarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabBarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB38DD98202FECC100BFFB0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BB38DD9A202FECC100BFFB0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BB38DD9D202FECC100BFFB0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BB38DD9F202FECC100BFFB0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BB38DDA2202FECC100BFFB0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BB38DDA4202FECC100BFFB0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BBB9AD561FAEE70A00342D5A /* Frameworks */ = {
+		BB38DD92202FECC100BFFB0F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,73 +35,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BBB9AD501FAEE70A00342D5A = {
+		BB38DD8C202FECC100BFFB0F = {
 			isa = PBXGroup;
 			children = (
-				BBB9AD5B1FAEE70A00342D5A /* ToastAnimationDemo */,
-				BBB9AD5A1FAEE70A00342D5A /* Products */,
+				BB38DD97202FECC100BFFB0F /* TabBarDemo */,
+				BB38DD96202FECC100BFFB0F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		BBB9AD5A1FAEE70A00342D5A /* Products */ = {
+		BB38DD96202FECC100BFFB0F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BBB9AD591FAEE70A00342D5A /* ToastAnimationDemo.app */,
+				BB38DD95202FECC100BFFB0F /* TabBarDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BBB9AD5B1FAEE70A00342D5A /* ToastAnimationDemo */ = {
+		BB38DD97202FECC100BFFB0F /* TabBarDemo */ = {
 			isa = PBXGroup;
 			children = (
-				BBB9AD5C1FAEE70A00342D5A /* AppDelegate.swift */,
-				BBB9AD5E1FAEE70A00342D5A /* ViewController.swift */,
-				BBB9AD601FAEE70A00342D5A /* Main.storyboard */,
-				BBB9AD631FAEE70A00342D5A /* Assets.xcassets */,
-				BBB9AD651FAEE70A00342D5A /* LaunchScreen.storyboard */,
-				BBB9AD681FAEE70A00342D5A /* Info.plist */,
-				BB6771E42028205D00D0023C /* Toast.swift */,
+				BB38DD98202FECC100BFFB0F /* AppDelegate.swift */,
+				BB38DD9A202FECC100BFFB0F /* ViewController.swift */,
+				BB38DD9C202FECC100BFFB0F /* Main.storyboard */,
+				BB38DD9F202FECC100BFFB0F /* Assets.xcassets */,
+				BB38DDA1202FECC100BFFB0F /* LaunchScreen.storyboard */,
+				BB38DDA4202FECC100BFFB0F /* Info.plist */,
 			);
-			path = ToastAnimationDemo;
+			path = TabBarDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BBB9AD581FAEE70A00342D5A /* ToastAnimationDemo */ = {
+		BB38DD94202FECC100BFFB0F /* TabBarDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BBB9AD6B1FAEE70A00342D5A /* Build configuration list for PBXNativeTarget "ToastAnimationDemo" */;
+			buildConfigurationList = BB38DDA7202FECC100BFFB0F /* Build configuration list for PBXNativeTarget "TabBarDemo" */;
 			buildPhases = (
-				BBB9AD551FAEE70A00342D5A /* Sources */,
-				BBB9AD561FAEE70A00342D5A /* Frameworks */,
-				BBB9AD571FAEE70A00342D5A /* Resources */,
+				BB38DD91202FECC100BFFB0F /* Sources */,
+				BB38DD92202FECC100BFFB0F /* Frameworks */,
+				BB38DD93202FECC100BFFB0F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ToastAnimationDemo;
-			productName = ToastAnimationDemo;
-			productReference = BBB9AD591FAEE70A00342D5A /* ToastAnimationDemo.app */;
+			name = TabBarDemo;
+			productName = TabBarDemo;
+			productReference = BB38DD95202FECC100BFFB0F /* TabBarDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BBB9AD511FAEE70A00342D5A /* Project object */ = {
+		BB38DD8D202FECC100BFFB0F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = Josscii;
+				ORGANIZATIONNAME = josscii;
 				TargetAttributes = {
-					BBB9AD581FAEE70A00342D5A = {
+					BB38DD94202FECC100BFFB0F = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = BBB9AD541FAEE70A00342D5A /* Build configuration list for PBXProject "ToastAnimationDemo" */;
+			buildConfigurationList = BB38DD90202FECC100BFFB0F /* Build configuration list for PBXProject "TabBarDemo" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -111,55 +108,54 @@
 				en,
 				Base,
 			);
-			mainGroup = BBB9AD501FAEE70A00342D5A;
-			productRefGroup = BBB9AD5A1FAEE70A00342D5A /* Products */;
+			mainGroup = BB38DD8C202FECC100BFFB0F;
+			productRefGroup = BB38DD96202FECC100BFFB0F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BBB9AD581FAEE70A00342D5A /* ToastAnimationDemo */,
+				BB38DD94202FECC100BFFB0F /* TabBarDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BBB9AD571FAEE70A00342D5A /* Resources */ = {
+		BB38DD93202FECC100BFFB0F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBB9AD671FAEE70A00342D5A /* LaunchScreen.storyboard in Resources */,
-				BBB9AD641FAEE70A00342D5A /* Assets.xcassets in Resources */,
-				BBB9AD621FAEE70A00342D5A /* Main.storyboard in Resources */,
+				BB38DDA3202FECC100BFFB0F /* LaunchScreen.storyboard in Resources */,
+				BB38DDA0202FECC100BFFB0F /* Assets.xcassets in Resources */,
+				BB38DD9E202FECC100BFFB0F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BBB9AD551FAEE70A00342D5A /* Sources */ = {
+		BB38DD91202FECC100BFFB0F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBB9AD5F1FAEE70A00342D5A /* ViewController.swift in Sources */,
-				BB6771E52028205D00D0023C /* Toast.swift in Sources */,
-				BBB9AD5D1FAEE70A00342D5A /* AppDelegate.swift in Sources */,
+				BB38DD9B202FECC100BFFB0F /* ViewController.swift in Sources */,
+				BB38DD99202FECC100BFFB0F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BBB9AD601FAEE70A00342D5A /* Main.storyboard */ = {
+		BB38DD9C202FECC100BFFB0F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BBB9AD611FAEE70A00342D5A /* Base */,
+				BB38DD9D202FECC100BFFB0F /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		BBB9AD651FAEE70A00342D5A /* LaunchScreen.storyboard */ = {
+		BB38DDA1202FECC100BFFB0F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BBB9AD661FAEE70A00342D5A /* Base */,
+				BB38DDA2202FECC100BFFB0F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -167,7 +163,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		BBB9AD691FAEE70A00342D5A /* Debug */ = {
+		BB38DDA5202FECC100BFFB0F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -224,7 +220,7 @@
 			};
 			name = Debug;
 		};
-		BBB9AD6A1FAEE70A00342D5A /* Release */ = {
+		BB38DDA6202FECC100BFFB0F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -274,30 +270,30 @@
 			};
 			name = Release;
 		};
-		BBB9AD6C1FAEE70A00342D5A /* Debug */ = {
+		BB38DDA8202FECC100BFFB0F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q3X7AW5CU;
-				INFOPLIST_FILE = ToastAnimationDemo/Info.plist;
+				INFOPLIST_FILE = TabBarDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.ToastAnimationDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.TabBarDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		BBB9AD6D1FAEE70A00342D5A /* Release */ = {
+		BB38DDA9202FECC100BFFB0F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q3X7AW5CU;
-				INFOPLIST_FILE = ToastAnimationDemo/Info.plist;
+				INFOPLIST_FILE = TabBarDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.ToastAnimationDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.TabBarDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -307,25 +303,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BBB9AD541FAEE70A00342D5A /* Build configuration list for PBXProject "ToastAnimationDemo" */ = {
+		BB38DD90202FECC100BFFB0F /* Build configuration list for PBXProject "TabBarDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BBB9AD691FAEE70A00342D5A /* Debug */,
-				BBB9AD6A1FAEE70A00342D5A /* Release */,
+				BB38DDA5202FECC100BFFB0F /* Debug */,
+				BB38DDA6202FECC100BFFB0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BBB9AD6B1FAEE70A00342D5A /* Build configuration list for PBXNativeTarget "ToastAnimationDemo" */ = {
+		BB38DDA7202FECC100BFFB0F /* Build configuration list for PBXNativeTarget "TabBarDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BBB9AD6C1FAEE70A00342D5A /* Debug */,
-				BBB9AD6D1FAEE70A00342D5A /* Release */,
+				BB38DDA8202FECC100BFFB0F /* Debug */,
+				BB38DDA9202FECC100BFFB0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = BBB9AD511FAEE70A00342D5A /* Project object */;
+	rootObject = BB38DD8D202FECC100BFFB0F /* Project object */;
 }

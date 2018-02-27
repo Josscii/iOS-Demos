@@ -23,6 +23,12 @@ class CacheObject: NSObject, NSCoding {
     }
     
     func encode(with aCoder: NSCoder) {
+        
+        // https://stackoverflow.com/a/25805619/4819236
+        guard value is NSObject && value is NSCoding else {
+            fatalError("value must a subclass of `NSObject` and comforms to `NSCoding` protocol")
+        }
+        
         aCoder.encode(value, forKey: "value")
         aCoder.encode(expireDate, forKey: "expiredDate")
     }
@@ -30,14 +36,15 @@ class CacheObject: NSObject, NSCoding {
 
 class ArchiveCache {
     static let shared = ArchiveCache()
+    private var memoryCache:NSCache<NSString, CacheObject> = NSCache()
+    private var cacheBaseURL: URL
+    private var cacheDirectoryName = "com.simple.archivecache"
+    
     private init() {
         let documentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-        cacheBaseURL = documentDirURL.appendingPathComponent("ArchiveCache")
+        cacheBaseURL = documentDirURL.appendingPathComponent(cacheDirectoryName)
         try! FileManager.default.createDirectory(at: cacheBaseURL, withIntermediateDirectories: true, attributes: nil)
     }
-    
-    private var memoryCache:[String: CacheObject] = [:]
-    private var cacheBaseURL: URL
     
     func save(key: String, value: Any, seconds: Int) {
         let now = Date()
@@ -45,7 +52,7 @@ class ArchiveCache {
         
         // save it to memory cache
         let cacheObject = CacheObject(value: value, expireDate: expireDate)
-        memoryCache[key] = cacheObject
+        memoryCache.setObject(cacheObject, forKey: key as NSString)
         
         // save it to disk
         let cacheURL = cacheBaseURL.appendingPathComponent("\(key).plist")
@@ -56,8 +63,9 @@ class ArchiveCache {
         let now = Date()
         
         // get memory cache
-        if let memoryObject = memoryCache[key] {
-            if now.timeIntervalSince(memoryObject.expireDate) > 0 {
+        if let memoryObject = memoryCache.object(forKey: key as NSString) {
+            if now > memoryObject.expireDate {
+                delete(key: key)
                 return nil
             } else {
                 return memoryObject.value
@@ -67,7 +75,8 @@ class ArchiveCache {
         // get disk cache
         let cacheURL = cacheBaseURL.appendingPathComponent("\(key).plist")
         if let diskObject = NSKeyedUnarchiver.unarchiveObject(withFile: cacheURL.path) as? CacheObject {
-            if now.timeIntervalSince(diskObject.expireDate) > 0 {
+            if now > diskObject.expireDate {
+                delete(key: key)
                 return nil
             } else {
                 return diskObject.value
@@ -76,6 +85,19 @@ class ArchiveCache {
         
         // nothing found
         return nil
+    }
+    
+    func delete(key: String) {
+        // delete memory cache
+        memoryCache.removeObject(forKey: key as NSString)
+        
+        // delete disk cache
+        let cacheURL = cacheBaseURL.appendingPathComponent("\(key).plist")
+        do {
+            try FileManager.default.removeItem(at: cacheURL)
+        } catch _ {
+            print("delete disk cache failed for key: \(key)")
+        }
     }
 }
 

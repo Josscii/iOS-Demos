@@ -58,11 +58,11 @@
 			children = (
 				BBA8FD241FB1BE7700600B3A /* AppDelegate.swift */,
 				BBA8FD261FB1BE7700600B3A /* ViewController.swift */,
+				BB9F3C4A1FB1CF8900199DBD /* ViewController2.swift */,
 				BBA8FD281FB1BE7700600B3A /* Main.storyboard */,
 				BBA8FD2B1FB1BE7700600B3A /* Assets.xcassets */,
 				BBA8FD2D1FB1BE7700600B3A /* LaunchScreen.storyboard */,
 				BBA8FD301FB1BE7700600B3A /* Info.plist */,
-				BB9F3C4A1FB1CF8900199DBD /* ViewController2.swift */,
 			);
 			path = UIBarButtonItemPositionDemo;
 			sourceTree = "<group>";
