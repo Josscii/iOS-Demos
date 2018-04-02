@@ -8,30 +8,26 @@
 
 import UIKit
 
-class SelfDelegateScrollView: UITableView {
+class SelfDelegateScrollView: UITableView, UIGestureRecognizerDelegate {
 //    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if otherGestureRecognizer.view is UIScrollView {
-//            return true
-//        }
-//
-//        return false
+//        return true
 //    }
 }
 
 class ViewController: UIViewController {
-    var scrollView1: SelfDelegateScrollView!
-    var scrollView2: UITableView!
+    var scrollView1: UITableView!
+    var scrollView2: SelfDelegateScrollView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        scrollView1 = SelfDelegateScrollView(frame: view.bounds)
+        scrollView1 = UITableView(frame: view.bounds)
         scrollView1.backgroundColor = .red
         scrollView1.showsVerticalScrollIndicator = false
         view.addSubview(scrollView1)
         
-        scrollView2 = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height-200))
+        scrollView2 = SelfDelegateScrollView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height-200))
         scrollView2.backgroundColor = .green
 //        scrollView1.addSubview(scrollView2)
         
@@ -116,44 +112,59 @@ extension ViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if scrollView == scrollView2 {
+        if scrollView == scrollView1 {
             
-            if scrollView.contentOffset.y < 0  {
-                scrollView1.isScrollEnabled = true
-                scrollView1.contentOffset.y += scrollView.contentOffset.y
-                scrollView.contentOffset.y = 0
-            }
-            
-            if (scrollView.contentOffset.y > 0 && scrollView1.contentOffset.y < 300) {
-                scrollView1.isScrollEnabled = false
-                var contentOffsetY = scrollView1.contentOffset.y
-                contentOffsetY += scrollView.contentOffset.y
-                scrollView1.contentOffset.y = min(contentOffsetY, 300)
-                scrollView.contentOffset.y = 0
-            }
-            
-            if scrollView.contentOffset.y > 0 {
-                scrollView1.isScrollEnabled = false
+            print(scrollView.contentOffset)
+            if scrollView.contentOffset.y > 300 {
+                scrollView.bounds.origin.y = 300
             }
         } else {
-            
-            if scrollView.contentOffset.y == 0 {
-                scrollView.isScrollEnabled = true
-                scrollView2.contentOffset.y = 0
-            }
-            
-            if scrollView.contentOffset.y > 300 {
-                var contentOffsetY = scrollView2.contentOffset.y
-                contentOffsetY += scrollView.contentOffset.y - 300
-                scrollView2.contentOffset.y = min(contentOffsetY, view.bounds.height)
-                scrollViewDidScroll(scrollView2)
-                
-                scrollView.contentOffset.y = 300
-//                scrollView.isScrollEnabled = false
-            }
-            
-            
+//            if scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.frame.height {
+//                scrollView1.isScrollEnabled = false
+//            } else {
+//                scrollView1.isScrollEnabled = true
+//            }
         }
+        
+        
+//        if scrollView == scrollView2 {
+//
+//            if scrollView.contentOffset.y < 0  {
+//                scrollView1.isScrollEnabled = true
+//                scrollView1.contentOffset.y += scrollView.contentOffset.y
+//                scrollView.contentOffset.y = 0
+//            }
+//
+//            if (scrollView.contentOffset.y > 0 && scrollView1.contentOffset.y < 300) {
+//                scrollView1.isScrollEnabled = false
+//                var contentOffsetY = scrollView1.contentOffset.y
+//                contentOffsetY += scrollView.contentOffset.y
+//                scrollView1.contentOffset.y = min(contentOffsetY, 300)
+//                scrollView.contentOffset.y = 0
+//            }
+//
+//            if scrollView.contentOffset.y > 0 {
+//                scrollView1.isScrollEnabled = false
+//            }
+//        } else {
+//
+//            if scrollView.contentOffset.y == 0 {
+//                scrollView.isScrollEnabled = true
+//                scrollView2.contentOffset.y = 0
+//            }
+//
+//            if scrollView.contentOffset.y > 300 {
+//                var contentOffsetY = scrollView2.contentOffset.y
+//                contentOffsetY += scrollView.contentOffset.y - 300
+//                scrollView2.contentOffset.y = min(contentOffsetY, view.bounds.height)
+//                scrollViewDidScroll(scrollView2)
+//
+//                scrollView.contentOffset.y = 300
+////                scrollView.isScrollEnabled = false
+//            }
+//
+//
+//        }
     }
 }
 
