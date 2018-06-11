@@ -54,12 +54,19 @@ class ViewController2: UIViewController {
         
 //        tableView.reloadData()
         
-//        num = 1
+        /** 对数据进行重新赋值的时候必须 dispatch 到主线程去做，因为这时候可能有其他操作 */
+        DispatchQueue.main.async {
+            self.num = 1
+            self.tableView.reloadData()
+        }
+//        tableView.reloadData()
         
-//        tableView.beginUpdates()
+        tableView.beginUpdates()
+        
 //        tableView.insertRows(at: [IndexPath.init(row: 1, section: 0)], with: .automatic)
 //        tableView.deleteRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
-//        tableView.endUpdates()
+        
+        tableView.endUpdates()
         
         /*
          
@@ -80,5 +87,9 @@ extension ViewController2: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = text
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         return UITableViewAutomaticDimension
     }
 }
