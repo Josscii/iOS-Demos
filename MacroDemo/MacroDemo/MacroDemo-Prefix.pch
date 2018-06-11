@@ -1,13 +1,15 @@
 //
-//  Macros.h
-//  ObjCDemo
+//  MacroDemo-Prefix.pch
+//  MacroDemo
 //
-//  Created by josscii on 2018/1/19.
+//  Created by josscii on 2018/6/7.
 //  Copyright © 2018年 josscii. All rights reserved.
 //
 
-#ifndef Macros_h
-#define Macros_h
+#ifndef MacroDemo_Prefix_pch
+#define MacroDemo_Prefix_pch
+
+#import <UIKit/UIKit.h>
 
 #pragma mark -
 #pragma mark project convience
@@ -23,7 +25,8 @@
 #define ISArray(x) [x isKindOfClass:[NSArray class]]
 #define ISString(x) [x isKindOfClass:[NSString class]]
 
-static inline BOOL isEmpty(id x) {
+CG_INLINE BOOL
+isEmpty(id x) {
     if (x == nil) return YES;
     if ([x isEqual:[NSNull null]]) return YES;
     if ([x respondsToSelector:@selector(count)]) return [x performSelector:@selector(count)] == 0;
@@ -31,9 +34,23 @@ static inline BOOL isEmpty(id x) {
     return NO;
 }
 
-static inline BOOL isPresent(id x) {
+CG_INLINE BOOL
+isPresent(id x) {
     return !isEmpty(x);
 }
+
+#ifndef dispatch_queue_async_safe
+#define dispatch_queue_async_safe(queue, block)\
+if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(queue)) {\
+block();\
+} else {\
+dispatch_async(queue, block);\
+}
+#endif
+
+#ifndef dispatch_main_async_safe
+#define dispatch_main_async_safe(block) dispatch_queue_async_safe(dispatch_get_main_queue(), block)
+#endif
 
 #pragma mark -
 #pragma mark iOS Version
@@ -53,5 +70,20 @@ static inline BOOL isPresent(id x) {
 #define UIColorFromRGBA(r,g,b,a)            [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 #define UIColorFromRGB(r,g,b)               UIColorFromRGBA(r,g,b,1.0)
 
+#pragma mark -
 
-#endif /* Macros_h */
+#define ScreenScale ([[UIScreen mainScreen] scale])
+
+CG_INLINE CGFloat
+scaleCeil(CGFloat floatValue) {
+    CGFloat flattedValue = ceil(floatValue * ScreenScale) / ScreenScale;
+    return flattedValue;
+}
+
+CG_INLINE CGFloat
+scaleFloor(CGFloat floatValue) {
+    CGFloat flattedValue = floor(floatValue * ScreenScale) / ScreenScale;
+    return flattedValue;
+}
+
+#endif /* MacroDemo_Prefix_pch */
