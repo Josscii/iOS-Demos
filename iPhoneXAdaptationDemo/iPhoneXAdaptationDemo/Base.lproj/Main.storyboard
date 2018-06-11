@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bti-8B-oif">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bti-8B-oif">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,23 +13,26 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iPhoneXAdaptationDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aY8-UK-fZj"/>
+                        <viewControllerLayoutGuide type="bottom" id="qWn-iC-Xyg"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E4K-iL-9tx">
-                                <rect key="frame" x="0.0" y="49" width="375" height="584"/>
+                                <rect key="frame" x="0.0" y="-24" width="375" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="E4K-iL-9tx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-15" id="GQA-On-3th"/>
-                            <constraint firstItem="E4K-iL-9tx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HIo-Bd-Krx"/>
-                            <constraint firstItem="E4K-iL-9tx" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="15" id="SxZ-dV-b2b"/>
-                            <constraint firstItem="E4K-iL-9tx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lMA-in-URs"/>
+                            <constraint firstItem="E4K-iL-9tx" firstAttribute="top" secondItem="aY8-UK-fZj" secondAttribute="bottom" constant="-88" id="GQA-On-3th"/>
+                            <constraint firstItem="E4K-iL-9tx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HIo-Bd-Krx"/>
+                            <constraint firstItem="E4K-iL-9tx" firstAttribute="bottom" secondItem="qWn-iC-Xyg" secondAttribute="top" constant="83" id="SxZ-dV-b2b"/>
+                            <constraint firstItem="E4K-iL-9tx" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="lMA-in-URs"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="n0I-Tn-dda">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="p7X-NU-7xD">
@@ -50,6 +53,10 @@
         <scene sceneID="apW-Bl-L0l">
             <objects>
                 <viewController id="Grz-uy-Sxz" customClass="ViewController2" customModule="iPhoneXAdaptationDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jKo-uP-jRc"/>
+                        <viewControllerLayoutGuide type="bottom" id="nRG-QQ-QLp"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="huH-VF-pgM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,11 +74,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WX8-9V-n1P" firstAttribute="top" secondItem="huH-VF-pgM" secondAttribute="top" id="1Vh-JM-Wfp"/>
-                            <constraint firstItem="WX8-9V-n1P" firstAttribute="trailing" secondItem="Lx0-sd-ToO" secondAttribute="trailing" id="YgI-tg-mFW"/>
-                            <constraint firstItem="WX8-9V-n1P" firstAttribute="leading" secondItem="Lx0-sd-ToO" secondAttribute="leading" id="Yyb-ID-3JQ"/>
-                            <constraint firstItem="WX8-9V-n1P" firstAttribute="bottom" secondItem="Lx0-sd-ToO" secondAttribute="bottom" id="eEj-2S-QvA"/>
+                            <constraint firstItem="WX8-9V-n1P" firstAttribute="trailing" secondItem="huH-VF-pgM" secondAttribute="trailing" id="YgI-tg-mFW"/>
+                            <constraint firstItem="WX8-9V-n1P" firstAttribute="leading" secondItem="huH-VF-pgM" secondAttribute="leading" id="Yyb-ID-3JQ"/>
+                            <constraint firstItem="WX8-9V-n1P" firstAttribute="bottom" secondItem="nRG-QQ-QLp" secondAttribute="top" id="eEj-2S-QvA"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Lx0-sd-ToO"/>
                     </view>
                     <connections>
                         <outlet property="testView" destination="Ja7-UT-SNw" id="ees-UU-PE5"/>

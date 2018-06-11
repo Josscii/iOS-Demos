@@ -18,10 +18,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    CGFloat f = 1.2;
-    CGFloat newF = scaleCeil(f);
-    
-    NSLog(@"%f", newF);
+    id a;
+    if (isValidArray(a)) {
+        
+    }
 }
 
 

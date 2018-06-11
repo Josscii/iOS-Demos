@@ -39,6 +39,22 @@ isPresent(id x) {
     return !isEmpty(x);
 }
 
+CG_INLINE BOOL
+isValidArray(id x) {
+    if ([x isKindOfClass:[NSArray class]] && [x length] > 0) {
+        return YES;
+    }
+    return NO;
+}
+
+CG_INLINE BOOL
+isValidDictionary(id x) {
+    if ([x isKindOfClass:[NSDictionary class]] && [x count] > 0) {
+        return YES;
+    }
+    return NO;
+}
+
 #ifndef dispatch_queue_async_safe
 #define dispatch_queue_async_safe(queue, block)\
 if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(queue)) {\

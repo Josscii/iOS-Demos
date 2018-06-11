@@ -29,7 +29,7 @@ class ViewController2: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        print(whiteView.safeAreaInsets)
+//        print(whiteView.safeAreaInsets)
     }
 
 }
