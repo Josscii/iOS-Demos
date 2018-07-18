@@ -19,6 +19,7 @@
 		BB3CDAF4202A9A22000096F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB3CDAF3202A9A22000096F1 /* Assets.xcassets */; };
 		BB3CDAF7202A9A22000096F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3CDAF5202A9A22000096F1 /* LaunchScreen.storyboard */; };
 		BB59A120202AD3B8006434B5 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB59A11F202AD3B8006434B5 /* ViewController2.swift */; };
+		BBE4ACAE20F6F03D00DC7E17 /* ViewController5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE4ACAD20F6F03D00DC7E17 /* ViewController5.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		BB3CDAF6202A9A22000096F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB3CDAF8202A9A22000096F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB59A11F202AD3B8006434B5 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		BBE4ACAD20F6F03D00DC7E17 /* ViewController5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController5.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				BB3CDAEC202A9A22000096F1 /* AppDelegate.swift */,
+				BBE4ACAC20F6F01100DC7E17 /* cellforrow or cellwilldisplay */,
 				BB31CAEF202C19C800965EFE /* estimatedRowHeight */,
 				BB31CAEE202C19B700965EFE /* update */,
 				BB31CAF4202C1A0100965EFE /* life */,
@@ -115,6 +118,14 @@
 				BB3CDAF8202A9A22000096F1 /* Info.plist */,
 			);
 			path = TableViewDemo;
+			sourceTree = "<group>";
+		};
+		BBE4ACAC20F6F01100DC7E17 /* cellforrow or cellwilldisplay */ = {
+			isa = PBXGroup;
+			children = (
+				BBE4ACAD20F6F03D00DC7E17 /* ViewController5.swift */,
+			);
+			path = "cellforrow or cellwilldisplay";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +210,7 @@
 				BB3CDAEF202A9A22000096F1 /* ViewController.swift in Sources */,
 				BB31CAF8202C1AA400965EFE /* ViewController4.swift in Sources */,
 				BB3CDAED202A9A22000096F1 /* AppDelegate.swift in Sources */,
+				BBE4ACAE20F6F03D00DC7E17 /* ViewController5.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
