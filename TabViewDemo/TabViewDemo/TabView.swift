@@ -1,6 +1,6 @@
 //
 //  TabView.swift
-//  ListLayout
+//  TabView
 //
 //  Created by josscii on 2018/7/17.
 //  Copyright © 2018年 josscii. All rights reserved.
@@ -11,8 +11,8 @@ import UIKit
 public protocol TabViewDelegate: class {
     func tabView(_ tabView: TabView, indicatorViewWith superView: UIView) -> UIView
     func tabView(_ tabView: TabView, configureItemViewAt index: Int, with cell: TabItemCell)
-    func tabView(_ tabView: TabView, didSelect itemView: TabItemView, at index: Int)
-    func tabView(_ tabView: TabView, update indicatorView: UIView, with progress: CGFloat)
+    func tabView(_ tabView: TabView, didSelect itemView: TabItemView?, at index: Int)
+    func tabView(_ tabView: TabView, update indicatorView: UIView?, with progress: CGFloat)
     
     func numberOfItems(in tabView: TabView) -> Int
 }
@@ -167,11 +167,7 @@ extension TabView {
     }
     
     private func updateIndicator(with progress: CGFloat) {
-        guard let indicatorView = indicatorView else {
-            return
-        }
-        
-        delegate?.tabView(self, update: indicatorView, with: progress)
+        delegate?.tabView(self, update: self.indicatorView, with: progress)
     }
     
     private func updateTabView(with index: Int) {
@@ -216,13 +212,12 @@ extension TabView: UICollectionViewDelegateFlowLayout {
         
         updateTabView(with: selectedIndex)
         
-        let cell = collectionView.cellForItem(at: indexPath) as? TabItemCell
-        if let itemView = cell?.itemView {
-            UIView.animate(withDuration: animationDuration) {
-                self.coordinatedScrollView.contentOffset.x = CGFloat(self.selectedIndex) * self.coordinatedScrollView.bounds.width
-            }
-            delegate?.tabView(self, didSelect: itemView, at: selectedIndex)
+        UIView.animate(withDuration: animationDuration) {
+            self.coordinatedScrollView.contentOffset.x = CGFloat(self.selectedIndex) * self.coordinatedScrollView.bounds.width
         }
+        
+        let cell = collectionView.cellForItem(at: indexPath) as? TabItemCell
+        delegate?.tabView(self, didSelect: cell?.itemView, at: selectedIndex)
     }
 }
 
@@ -243,7 +238,7 @@ extension TabView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TabItemCell.reuseIdentifier, for: indexPath) as! TabItemCell
         delegate.tabView(self, configureItemViewAt: indexPath.item, with: cell)
         
-        if isFirstInit && indexPath.item == selectedIndex {
+        if isFirstInit && indexPath.item == 0 {
             selectItem(at: indexPath.item)
             cell.isSelected = true
             isFirstInit = false

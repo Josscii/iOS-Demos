@@ -1,6 +1,6 @@
 //
 //  WYTabView.m
-//  ListLayout
+//  WYTabView
 //
 //  Created by josscii on 2018/7/18.
 //  Copyright © 2018年 josscii. All rights reserved.
@@ -26,36 +26,38 @@
 
 @end
 
-@interface WYTabView () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
+@interface WYTabView () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource> {
+    NSInteger _selectedIndex;
+    BOOL _isFirstInit;
+}
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIView *indicatorSuperView;
-@property (nonatomic, assign) NSInteger selectedIndex;
-@property (nonatomic, assign) BOOL isFirstInit;
-@property (nonatomic, assign) CGFloat animationDuration;
+@property (nonatomic, strong) UIView *indicatorView;
+@property (nonatomic, strong) UIScrollView *coordinatedScrollView;
 
 @end
 
 @implementation WYTabView
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame
+        coordinatedScrollView:(UIScrollView *)coordinatedScrollView {
     self = [super initWithFrame:frame];
     if (self) {
+        _coordinatedScrollView = coordinatedScrollView;
         [self commonInit];
     }
     return self;
 }
 
-- (instancetype)init {
-    self = [super initWithFrame:CGRectZero];
-    if (self) {
-        [self commonInit];
-    }
-    return self;
+- (instancetype)initWithCoordinatedScrollView:(UIScrollView *)coordinatedScrollView {
+    return [self initWithFrame:CGRectZero coordinatedScrollView:coordinatedScrollView];
 }
 
 - (void)commonInit {
     _animationDuration = 0.25;
+    _isFirstInit = YES;
+    [_coordinatedScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.minimumLineSpacing = 0;
@@ -84,7 +86,7 @@
     [super layoutSubviews];
     
     self.indicatorSuperView.frame = CGRectMake(0, 0, [self itemSize].width, [self itemSize].height);
-    [self.delegate tabView:self configureIndicatorWithSuperView:self.indicatorSuperView];
+    self.indicatorView = [self.delegate tabView:self indicatorWithSuperView:self.indicatorSuperView];
 }
 
 - (CGSize)itemSize {
@@ -100,39 +102,64 @@
 #pragma mark -
 #pragma mark
 
-- (void)updateTabViewWithCoordinatedScrollView:(UIScrollView *)coordinatedScrollView {
-    CGFloat contentOffsetX = coordinatedScrollView.contentOffset.x;
-    CGFloat scrollViewWidth = coordinatedScrollView.bounds.size.width;
-    
-    CGFloat mod = fmod(contentOffsetX, scrollViewWidth);
-    CGFloat divider = contentOffsetX / scrollViewWidth;
-    
-    CGFloat x = divider * self.itemWidth + (mod / scrollViewWidth) * self.itemWidth;
-    CGRect frame = self.indicatorSuperView.frame;
-    frame.origin.x = x;
-    self.indicatorSuperView.frame= frame;
-    
-    if (divider < 0) {
-        return;
-    }
-    
-    NSInteger index = 0;
-    CGFloat decimal = fmod(divider, 1);
-    if (decimal > 0.5) {
-        index = ceil(divider);
-    } else {
-        index = floor(divider);
-    }
-    
-    [self updateTabViewWithIndex:index];
-}
-
 - (void)reloadData {
     [self.collectionView reloadData];
+    [self updateTabView];
 }
 
 #pragma mark -
 #pragma mark
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+    if ([keyPath isEqualToString:@"contentOffset"]) {
+        [self updateTabView];
+    }
+}
+
+#pragma mark -
+#pragma mark
+
+- (void)updateTabView {
+    CGFloat contentOffsetX = self.coordinatedScrollView.contentOffset.x;
+    CGFloat scrollViewWidth = self.coordinatedScrollView.bounds.size.width;
+    CGFloat contentWidth = self.coordinatedScrollView.contentSize.width;
+    
+    CGFloat mod = fmod(contentOffsetX, scrollViewWidth);
+    CGFloat quotient = contentOffsetX / scrollViewWidth;
+    
+    CGFloat x = (int)quotient * self.itemWidth + (mod / scrollViewWidth) * self.itemWidth;
+    CGRect frame = self.indicatorSuperView.frame;
+    frame.origin.x = x;
+    self.indicatorSuperView.frame = frame;
+    
+    CGFloat max = (contentWidth / scrollViewWidth) - 1;
+    if (quotient < 0 || quotient > max) {
+        return;
+    }
+    
+    NSInteger index = 0;
+    CGFloat decimal = fmod(quotient, 1);
+    if (decimal > 0.5) {
+        index = ceil(quotient);
+    } else {
+        index = floor(quotient);
+    }
+    [self updateTabViewWithIndex:index];
+    
+    CGFloat progress = (0.5 - fabs(0.5 - decimal)) * 2;
+    [self updateIndicatorWithProgress:progress];
+}
+
+- (void)updateIndicatorWithProgress:(CGFloat)progress {
+    if (self.indicatorView == nil) {
+        return;
+    }
+    
+    [self.delegate tabView:self updateIndicatorView:self.indicatorView withProgress:progress];
+}
 
 - (void)updateTabViewWithIndex:(NSInteger)index {
     [self scrollToCenterWithIndex:index complection:^{
@@ -145,8 +172,15 @@
 }
 
 - (void)scrollToCenterWithIndex:(NSInteger)index complection:(void (^)(void))completion {
+    CGFloat maxOffsetX = self.collectionView.contentSize.width - self.collectionView.bounds.size.width;
+    
+    if (maxOffsetX < 0) {
+        completion();
+        return;
+    }
+    
     CGFloat x = [self itemSize].width * index - (self.collectionView.bounds.size.width-[self itemSize].width) / 2;
-    x = MIN(MAX(x, 0), self.collectionView.contentSize.width - self.collectionView.bounds.size.width);
+    x = MIN(MAX(x, 0), maxOffsetX);
     
     [UIView animateWithDuration:self.animationDuration animations:^{
         CGPoint contentOffset = self.collectionView.contentOffset;
@@ -167,12 +201,19 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSAssert(self.delegate != nil, @"delegate must not be nil");
     
-    self.selectedIndex = indexPath.item;
+    _selectedIndex = indexPath.item;
     
-    [self updateTabViewWithIndex:self.selectedIndex];
+    [self updateTabViewWithIndex:_selectedIndex];
     
     WYTabItemCell *cell = (WYTabItemCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    [self.delegate tabView:self didSelectItemView:cell.itemView atIndex:self.selectedIndex];
+    
+    [UIView animateWithDuration:self.animationDuration animations:^{
+        CGPoint contentOffset = self.coordinatedScrollView.contentOffset;
+        contentOffset.x = self->_selectedIndex * self.coordinatedScrollView.bounds.size.width;
+        self.coordinatedScrollView.contentOffset = contentOffset;
+    }];
+    
+    [self.delegate tabView:self didSelectItemView:cell.itemView atIndex:_selectedIndex];
 }
 
 #pragma mark -
@@ -190,10 +231,10 @@
     WYTabItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[WYTabItemCell reuseIdentifier] forIndexPath:indexPath];
     [self.delegate tabView:self configureItemAtIndex:indexPath.item withCell:cell];
     
-    if (self.isFirstInit && indexPath.item == 0) {
+    if (_isFirstInit && indexPath.item == 0) {
         [self selectItemAtIndex:indexPath.item];
         cell.selected = YES;
-        self.isFirstInit = NO;
+        _isFirstInit = NO;
     }
     
     return cell;

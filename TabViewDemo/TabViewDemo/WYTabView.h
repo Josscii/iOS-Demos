@@ -12,12 +12,16 @@
 @class WYTabItemCell;
 @protocol WYTabItemView;
 
+NS_ASSUME_NONNULL_BEGIN;
+
 @protocol WYTabViewDelegate <NSObject>
 
-- (void)tabView:(WYTabView *)tabView configureIndicatorWithSuperView:(UIView *)superView;
+- (UIView *)tabView:(WYTabView *)tabView indicatorWithSuperView:(UIView *)superView;
 - (void)tabView:(WYTabView *)tabView configureItemAtIndex:(NSInteger)index withCell:(WYTabItemCell *)cell;
-- (void)tabView:(WYTabView *)tabView didSelectItemView:(id<WYTabItemView>)itemView atIndex:(NSInteger)index;
-- (NSInteger)numberOfItemsInTabView:(WYTabView *)tabView;
+- (void)tabView:(WYTabView *)tabView didSelectItemView:(nullable id<WYTabItemView>)itemView atIndex:(NSInteger)index;
+- (void)tabView:(WYTabView *)tabView updateIndicatorView:(nullable UIView *)indicatorView withProgress:(CGFloat)progress;
+
+- (NSInteger)numberOfItemsInTabView:(nonnull WYTabView *)tabView;
 
 @end
 
@@ -39,5 +43,14 @@
 
 @property (nonatomic, weak) id<WYTabViewDelegate> delegate;
 @property (nonatomic, assign) NSInteger itemWidth;
+@property (nonatomic, assign) double animationDuration;
+
+- (instancetype)initWithFrame:(CGRect)frame
+        coordinatedScrollView:(UIScrollView *)coordinatedScrollView;
+- (instancetype)initWithCoordinatedScrollView:(UIScrollView *)coordinatedScrollView;
+
+- (void)reloadData;
 
 @end
+
+NS_ASSUME_NONNULL_END;
