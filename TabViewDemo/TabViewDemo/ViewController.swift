@@ -8,6 +8,43 @@
 
 import UIKit
 
+class SimpleTabItemView: UIView, TabItemView {
+    var label = UILabel()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        commonInit()
+    }
+    
+    init() {
+        super.init(frame: .zero)
+        
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func commonInit() {
+        label.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(label)
+        NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0).isActive = true
+    }
+    
+    var isSelected: Bool = false {
+        didSet {
+            if isSelected {
+                label.textColor = .red
+            } else {
+                label.textColor = .black
+            }
+        }
+    }
+}
+
 class ViewController: UIViewController {
     
     var tabView: TabView!
@@ -16,43 +53,46 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabView = TabView(frame: CGRect(x: 0, y: 100, width: view.bounds.width, height: 100))
-        tabView.delegate = self
-        tabView.backgroundColor = .green
-        //        tabView.widthType = .fixed(width: 50)
-        view.addSubview(tabView)
-        
         scrollView = UIScrollView(frame: CGRect(x: 0, y: 400, width: view.bounds.width, height: 200))
         scrollView.contentSize = CGSize(width: view.bounds.width * CGFloat(items.count), height: 200)
         view.addSubview(scrollView)
-        scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.backgroundColor = .red
+        
+        tabView = TabView(frame: CGRect(x: 0, y: 100, width: view.bounds.width, height: 100), coordinatedScrollView: scrollView)
+        tabView.delegate = self
+        tabView.backgroundColor = .green
+        tabView.widthType = .fixed(width: 100)
+        view.addSubview(tabView)
     }
     
     var items = ["哈哈", "嘻嘻", "呜呜"]
     
-    
-}
-
-extension ViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        tabView.updateTabView(with: scrollView)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        tabView.reloadData()
     }
 }
 
 extension ViewController: TabViewDelegate {
-    func tabView(_ tabView: TabView, didSelect itemView: TabItemView, at index: Int) {
-        UIView.animate(withDuration: 0.25) {
-            self.scrollView.contentOffset.x = CGFloat(index) * self.scrollView.bounds.width
-        }
+    func tabView(_ tabView: TabView, update indicatorView: UIView, with progress: CGFloat) {
+        let width = 50 + (80 - 50) * progress
+        let x = (100 - width) / 2
+        
+        indicatorView.frame.size.width = width
+        indicatorView.frame.origin.x = x
     }
     
-    func tabView(_ tabView: TabView, configureIndicatorViewWith superView: UIView) {
+    func tabView(_ tabView: TabView, indicatorViewWith superView: UIView) -> UIView {
         let view = UIView()
         view.backgroundColor = .red
-        view.frame = CGRect(x: 0, y: 0, width: 40, height: 2)
+        view.frame = CGRect(x: (100-50)/2, y: 0, width: 50, height: 2)
         superView.addSubview(view)
+        
+        return view
+    }
+    
+    func tabView(_ tabView: TabView, didSelect itemView: TabItemView, at index: Int) {
+        
     }
     
     func numberOfItems(in tabView: TabView) -> Int {

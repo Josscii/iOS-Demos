@@ -8,25 +8,26 @@
 
 import UIKit
 
-protocol TabViewDelegate: class {
-    func tabView(_ tabView: TabView, configureIndicatorViewWith superView: UIView)
+public protocol TabViewDelegate: class {
+    func tabView(_ tabView: TabView, indicatorViewWith superView: UIView) -> UIView
     func tabView(_ tabView: TabView, configureItemViewAt index: Int, with cell: TabItemCell)
     func tabView(_ tabView: TabView, didSelect itemView: TabItemView, at index: Int)
+    func tabView(_ tabView: TabView, update indicatorView: UIView, with progress: CGFloat)
     
     func numberOfItems(in tabView: TabView) -> Int
 }
 
-enum TabViewWidthType {
+public enum TabViewWidthType {
     case fixed(width: CGFloat)
     case evenly
 }
 
-class TabItemCell: UICollectionViewCell {
-    var itemView: TabItemView?
+public class TabItemCell: UICollectionViewCell {
+    public var itemView: TabItemView?
     
     static let reuseIdentifier = "TabItemCell"
     
-    override var isSelected: Bool {
+    override public var isSelected: Bool {
         get {
             return super.isSelected
         }
@@ -38,81 +39,49 @@ class TabItemCell: UICollectionViewCell {
     }
 }
 
-protocol TabItemView {
+public protocol TabItemView {
     var isSelected: Bool { get set }
 }
 
-class SimpleTabItemView: UIView, TabItemView {
-    var label = UILabel()
+public class TabView: UIView {
     
-    override init(frame: CGRect) {
+    public weak var delegate: TabViewDelegate?
+    public var animationDuration: Double = 0.25
+    public var widthType: TabViewWidthType = .evenly
+    
+    private var collectionView: UICollectionView!
+    private var indicatorSuperView: UIView!
+    private var indicatorView: UIView?
+    private let coordinatedScrollView: UIScrollView
+    
+    private var selectedIndex = 0
+    private var isFirstInit = true
+    
+    public init(frame: CGRect, coordinatedScrollView: UIScrollView) {
+        self.coordinatedScrollView = coordinatedScrollView
+        
         super.init(frame: frame)
         
         commonInit()
     }
     
-    init() {
-        super.init(frame: .zero)
-        
-        commonInit()
+    convenience public init(coordinatedScrollView: UIScrollView) {
+        self.init(frame: .zero, coordinatedScrollView: coordinatedScrollView)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func commonInit() {
-        label.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(label)
-        NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0).isActive = true
-    }
-    
-    var isSelected: Bool = false {
-        didSet {
-            if isSelected {
-                label.textColor = .red
-            } else {
-                label.textColor = .black
-            }
-        }
-    }
-}
-
-class TabView: UIView {
-    
-    weak var delegate: TabViewDelegate?
-    
-    var widthType: TabViewWidthType = .evenly
-    
-    var collectionView: UICollectionView!
-    var collectionViewLayout: UICollectionViewFlowLayout!
-    
-    var indicatorSuperView: UIView!
-    
-    var selectedIndex = 0
-    var animationDuration = 0.25
-    
-    var isFirstInit = true
-   
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    private func commonInit() {
+        coordinatedScrollView.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
         
-        configureCollectionView()
-        configureIndicatorSuperView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configureCollectionView() {
-        collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.minimumLineSpacing = 0
-        collectionViewLayout.minimumInteritemSpacing = 0
-        collectionViewLayout.scrollDirection = .horizontal
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.scrollDirection = .horizontal
         
-        collectionView = UICollectionView(frame: bounds, collectionViewLayout: collectionViewLayout)
+        collectionView = UICollectionView(frame: bounds, collectionViewLayout: layout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -122,23 +91,20 @@ class TabView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPrefetchingEnabled = false
         addSubview(collectionView)
-    }
-    
-    func configureIndicatorSuperView() {
+        
         indicatorSuperView = UIView()
-        indicatorSuperView.backgroundColor = .white
         indicatorSuperView.layer.zPosition = -1
         collectionView.addSubview(indicatorSuperView)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         indicatorSuperView.frame = CGRect(origin: .zero, size: itemSize)
-        delegate?.tabView(self, configureIndicatorViewWith: indicatorSuperView)
+        indicatorView = delegate?.tabView(self, indicatorViewWith: indicatorSuperView)
     }
     
-    var itemSize: CGSize {
+    private var itemSize: CGSize {
         guard let delegate = delegate else {
             fatalError("delegate must not be nil")
         }
@@ -153,52 +119,82 @@ class TabView: UIView {
 }
 
 extension TabView {
-    func updateTabView(with coordinatedScrollView: UIScrollView) {
-        let contentOffsetX = coordinatedScrollView.contentOffset.x
-        let scrollViewWidth = coordinatedScrollView.bounds.width
-        
-        let mod = fmod(contentOffsetX, scrollViewWidth)
-        let divider = contentOffsetX / scrollViewWidth
-        
-        let x = CGFloat(Int(divider)) * itemSize.width + (mod / scrollViewWidth) * itemSize.width
-        
-        indicatorSuperView.frame.origin.x = x
-        
-        if divider < 0 {
-            return
+    override public func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?) {
+        if let keyPath = keyPath, keyPath == "contentOffset" {
+            updateTabView()
         }
-        
-        let index: Int
-        let decimal = fmod(divider, 1)
-        if decimal > 0.5 {
-            index = Int(ceil(divider))
-        } else {
-            index = Int(floor(divider))
-        }
-        
-        updateTabView(with: index)
-    }
-    
-    func reloadData() {
-        collectionView.reloadData()
     }
 }
 
 extension TabView {
-    func updateTabView(with index: Int) {
+    public func reloadData() {
+        collectionView.reloadData()
+        updateTabView()
+    }
+}
+
+extension TabView {
+    private func updateTabView() {
+        let contentOffsetX = coordinatedScrollView.contentOffset.x
+        let scrollViewWidth = coordinatedScrollView.bounds.width
+        let contentWidth = coordinatedScrollView.contentSize.width
+        
+        let mod = fmod(contentOffsetX, scrollViewWidth)
+        let quotient = contentOffsetX / scrollViewWidth
+        
+        let x = CGFloat(Int(quotient)) * itemSize.width + (mod / scrollViewWidth) * itemSize.width
+        indicatorSuperView.frame.origin.x = x
+        
+        let max = (contentWidth / scrollViewWidth) - 1
+        if quotient < 0 || quotient > max {
+            return
+        }
+        
+        let index: Int
+        let decimal = fmod(quotient, 1)
+        if decimal > 0.5 {
+            index = Int(ceil(quotient))
+        } else {
+            index = Int(floor(quotient))
+        }
+        updateTabView(with: index)
+        
+        let progress = (0.5 - abs(0.5 - decimal)) * 2
+        updateIndicator(with: progress)
+    }
+    
+    private func updateIndicator(with progress: CGFloat) {
+        guard let indicatorView = indicatorView else {
+            return
+        }
+        
+        delegate?.tabView(self, update: indicatorView, with: progress)
+    }
+    
+    private func updateTabView(with index: Int) {
         scrollToCenter(with: index) {
             self.selectItem(at: index)
         }
     }
     
-    func selectItem(at index: Int) {
+    private func selectItem(at index: Int) {
         collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: false, scrollPosition: .top)
     }
     
-    func scrollToCenter(with index: Int, completion: @escaping () -> Void) {
+    private func scrollToCenter(with index: Int, completion: @escaping () -> Void) {
+        let maxOffsetX = collectionView.contentSize.width - collectionView.bounds.width
+        
+        if maxOffsetX < 0 {
+            completion()
+            return
+        }
+        
         var x = itemSize.width * CGFloat(index) - (collectionView.bounds.width-itemSize.width) / 2
         
-        x = min(max(x, 0), collectionView.contentSize.width - collectionView.bounds.width)
+        x = min(max(x, 0), maxOffsetX)
         
         UIView.animate(withDuration: animationDuration, animations: {
             self.collectionView.contentOffset.x = x
@@ -209,30 +205,29 @@ extension TabView {
 }
 
 extension TabView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
+    public func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return itemSize
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let delegate = delegate else {
-            fatalError("delegate must not be nil")
-        }
-
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.item
         
         updateTabView(with: selectedIndex)
         
         let cell = collectionView.cellForItem(at: indexPath) as? TabItemCell
         if let itemView = cell?.itemView {
-            delegate.tabView(self, didSelect: itemView, at: selectedIndex)
+            UIView.animate(withDuration: animationDuration) {
+                self.coordinatedScrollView.contentOffset.x = CGFloat(self.selectedIndex) * self.coordinatedScrollView.bounds.width
+            }
+            delegate?.tabView(self, didSelect: itemView, at: selectedIndex)
         }
     }
 }
 
 extension TabView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let delegate = delegate else {
             fatalError("delegate must not be nil")
         }
@@ -240,7 +235,7 @@ extension TabView: UICollectionViewDataSource {
         return delegate.numberOfItems(in: self)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let delegate = delegate else {
             fatalError("delegate must not be nil")
         }
@@ -248,7 +243,7 @@ extension TabView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TabItemCell.reuseIdentifier, for: indexPath) as! TabItemCell
         delegate.tabView(self, configureItemViewAt: indexPath.item, with: cell)
         
-        if isFirstInit && indexPath.item == 0 {
+        if isFirstInit && indexPath.item == selectedIndex {
             selectItem(at: indexPath.item)
             cell.isSelected = true
             isFirstInit = false
