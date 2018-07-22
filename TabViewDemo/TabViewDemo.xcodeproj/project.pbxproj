@@ -7,17 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB2A60B02104575200EE8682 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2A60AF2104575200EE8682 /* TabView.swift */; };
 		BB32B1D820FF325700F67A36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB32B1D720FF325700F67A36 /* AppDelegate.swift */; };
 		BB32B1DA20FF325700F67A36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB32B1D920FF325700F67A36 /* ViewController.swift */; };
 		BB32B1DD20FF325700F67A36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB32B1DB20FF325700F67A36 /* Main.storyboard */; };
 		BB32B1DF20FF325800F67A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB32B1DE20FF325800F67A36 /* Assets.xcassets */; };
 		BB32B1E220FF325800F67A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB32B1E020FF325800F67A36 /* LaunchScreen.storyboard */; };
-		BB32B1EA20FF32A300F67A36 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB32B1E920FF32A300F67A36 /* TabView.swift */; };
 		BB32B1F020FF32AE00F67A36 /* WYTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB32B1ED20FF32AE00F67A36 /* WYTabView.m */; };
 		BB32B1F120FF32AE00F67A36 /* WYSimpleTabItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB32B1EE20FF32AE00F67A36 /* WYSimpleTabItemView.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BB2A608F210432EA00EE8682 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BB2A60AF2104575200EE8682 /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		BB32B1D420FF325700F67A36 /* TabViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB32B1D720FF325700F67A36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB32B1D920FF325700F67A36 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +39,6 @@
 		BB32B1DE20FF325800F67A36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB32B1E120FF325800F67A36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB32B1E320FF325800F67A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB32B1E920FF32A300F67A36 /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		BB32B1EB20FF32AD00F67A36 /* TabViewDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TabViewDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		BB32B1EC20FF32AE00F67A36 /* WYTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYTabView.h; sourceTree = "<group>"; };
 		BB32B1ED20FF32AE00F67A36 /* WYTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYTabView.m; sourceTree = "<group>"; };
@@ -67,8 +80,8 @@
 				BB32B1EE20FF32AE00F67A36 /* WYSimpleTabItemView.m */,
 				BB32B1EC20FF32AE00F67A36 /* WYTabView.h */,
 				BB32B1ED20FF32AE00F67A36 /* WYTabView.m */,
-				BB32B1E920FF32A300F67A36 /* TabView.swift */,
 				BB32B1D720FF325700F67A36 /* AppDelegate.swift */,
+				BB2A60AF2104575200EE8682 /* TabView.swift */,
 				BB32B1D920FF325700F67A36 /* ViewController.swift */,
 				BB32B1DB20FF325700F67A36 /* Main.storyboard */,
 				BB32B1DE20FF325800F67A36 /* Assets.xcassets */,
@@ -89,6 +102,7 @@
 				BB32B1D020FF325700F67A36 /* Sources */,
 				BB32B1D120FF325700F67A36 /* Frameworks */,
 				BB32B1D220FF325700F67A36 /* Resources */,
+				BB2A608F210432EA00EE8682 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,9 +165,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB2A60B02104575200EE8682 /* TabView.swift in Sources */,
 				BB32B1F020FF32AE00F67A36 /* WYTabView.m in Sources */,
 				BB32B1DA20FF325700F67A36 /* ViewController.swift in Sources */,
-				BB32B1EA20FF32A300F67A36 /* TabView.swift in Sources */,
 				BB32B1F120FF32AE00F67A36 /* WYSimpleTabItemView.m in Sources */,
 				BB32B1D820FF325700F67A36 /* AppDelegate.swift in Sources */,
 			);
@@ -298,6 +312,7 @@
 		BB32B1E720FF325800F67A36 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -319,6 +334,7 @@
 		BB32B1E820FF325800F67A36 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
