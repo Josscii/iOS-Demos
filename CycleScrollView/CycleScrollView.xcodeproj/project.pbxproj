@@ -12,6 +12,7 @@
 		BB4D4D4A207C891000EB3936 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB4D4D48207C891000EB3936 /* Main.storyboard */; };
 		BB4D4D4C207C891000EB3936 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB4D4D4B207C891000EB3936 /* Assets.xcassets */; };
 		BB4D4D4F207C891000EB3936 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB4D4D4D207C891000EB3936 /* LaunchScreen.storyboard */; };
+		BB4F286821017C9E00BF338B /* WYCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4F286721017C9E00BF338B /* WYCycleScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		BB4D4D4B207C891000EB3936 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB4D4D4E207C891000EB3936 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB4D4D50207C891000EB3936 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB4F286521017C9D00BF338B /* CycleScrollView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CycleScrollView-Bridging-Header.h"; sourceTree = "<group>"; };
+		BB4F286621017C9E00BF338B /* WYCycleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYCycleScrollView.h; sourceTree = "<group>"; };
+		BB4F286721017C9E00BF338B /* WYCycleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCycleScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,9 @@
 				BB4D4D4B207C891000EB3936 /* Assets.xcassets */,
 				BB4D4D4D207C891000EB3936 /* LaunchScreen.storyboard */,
 				BB4D4D50207C891000EB3936 /* Info.plist */,
+				BB4F286621017C9E00BF338B /* WYCycleScrollView.h */,
+				BB4F286721017C9E00BF338B /* WYCycleScrollView.m */,
+				BB4F286521017C9D00BF338B /* CycleScrollView-Bridging-Header.h */,
 			);
 			path = CycleScrollView;
 			sourceTree = "<group>";
@@ -96,6 +103,7 @@
 				TargetAttributes = {
 					BB4D4D40207C891000EB3936 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -138,6 +146,7 @@
 			files = (
 				BB4D4D47207C891000EB3936 /* ViewController.swift in Sources */,
 				BB4D4D45207C891000EB3936 /* AppDelegate.swift in Sources */,
+				BB4F286821017C9E00BF338B /* WYCycleScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,12 +283,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q3X7AW5CU;
 				INFOPLIST_FILE = CycleScrollView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.CycleScrollView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CycleScrollView/CycleScrollView-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -289,12 +301,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q3X7AW5CU;
 				INFOPLIST_FILE = CycleScrollView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josscii.CycleScrollView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CycleScrollView/CycleScrollView-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

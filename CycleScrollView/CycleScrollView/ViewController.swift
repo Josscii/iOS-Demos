@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     var scrollView: UIScrollView!
     
-    var colors: [UIColor] = [.red, .yellow]
+    var colors: [UIColor] = [.red, .yellow, .green]
     var preView: UIView!
     var currentView: UIView!
     var nextView: UIView!
@@ -21,15 +21,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         preView = UIView()
-        preView.backgroundColor = .yellow
+        preView.backgroundColor = .red
         preView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
         
         currentView = UIView()
-        currentView.backgroundColor = .red
+        currentView.backgroundColor = .yellow
         currentView.frame = CGRect(x: view.frame.width, y: 0, width: view.frame.width, height: 300)
         
         nextView = UIView()
-        nextView.backgroundColor = .yellow
+        nextView.backgroundColor = .green
         nextView.frame = CGRect(x: view.frame.width * 2, y: 0, width: view.frame.width, height: 300)
         
         scrollView = UIScrollView()
@@ -70,7 +70,7 @@ extension ViewController: UIScrollViewDelegate {
     }
     
     func nextCycleColor(color: UIColor) -> UIColor {
-        return colors[(colors.index(of: color)!+1) % 2]
+        return colors[(colors.index(of: color)!+1) % 3]
     }
     
     func preCycleColor(color: UIColor) -> UIColor {
@@ -78,7 +78,7 @@ extension ViewController: UIScrollViewDelegate {
         if index < 0 {
             index = 1
         }
-        return colors[index % 2]
+        return colors[index % 3]
     }
 }
 
