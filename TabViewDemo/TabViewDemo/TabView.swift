@@ -111,6 +111,10 @@ public class TabView: UIView {
             collectionViewLayout.estimatedItemSize = CGSize(width: 50, height: bounds.height)
         }
     }
+    
+    deinit {
+        coordinatedScrollView.removeObserver(self, forKeyPath: "contentOffset")
+    }
 }
 
 extension TabView {
@@ -217,7 +221,6 @@ extension TabView {
     
     private func updateCell(with index: Int) {
         selectedIndex = index
-        // scroll the cell at index to center and select it
         selectItem(at: index)
         scrollToCenter(with: index)
     }
@@ -248,10 +251,12 @@ extension TabView: UICollectionViewDelegate {
             cell?.update(with: 0)
         }
         
+        // animate coordinatedScrollView contentOffset
         UIView.animate(withDuration: animationDuration) {
             self.coordinatedScrollView.contentOffset.x = CGFloat(self.selectedIndex) * self.coordinatedScrollView.bounds.width
         }
         
+        // call the delegate
         delegate?.tabView(self, didSelectItemAt: indexPath.item)
     }
 }

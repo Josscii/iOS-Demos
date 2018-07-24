@@ -15,6 +15,7 @@
 		BB32B1E220FF325800F67A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB32B1E020FF325800F67A36 /* LaunchScreen.storyboard */; };
 		BB32B1F020FF32AE00F67A36 /* WYTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB32B1ED20FF32AE00F67A36 /* WYTabView.m */; };
 		BB32B1F120FF32AE00F67A36 /* WYSimpleTabItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB32B1EE20FF32AE00F67A36 /* WYSimpleTabItemView.m */; };
+		BB5B3B29210777E800946B86 /* TabItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5B3B28210777E800946B86 /* TabItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +45,7 @@
 		BB32B1ED20FF32AE00F67A36 /* WYTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYTabView.m; sourceTree = "<group>"; };
 		BB32B1EE20FF32AE00F67A36 /* WYSimpleTabItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYSimpleTabItemView.m; sourceTree = "<group>"; };
 		BB32B1EF20FF32AE00F67A36 /* WYSimpleTabItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYSimpleTabItemView.h; sourceTree = "<group>"; };
+		BB5B3B28210777E800946B86 /* TabItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +83,14 @@
 				BB32B1EC20FF32AE00F67A36 /* WYTabView.h */,
 				BB32B1ED20FF32AE00F67A36 /* WYTabView.m */,
 				BB32B1D720FF325700F67A36 /* AppDelegate.swift */,
-				BB2A60AF2104575200EE8682 /* TabView.swift */,
 				BB32B1D920FF325700F67A36 /* ViewController.swift */,
 				BB32B1DB20FF325700F67A36 /* Main.storyboard */,
 				BB32B1DE20FF325800F67A36 /* Assets.xcassets */,
 				BB32B1E020FF325800F67A36 /* LaunchScreen.storyboard */,
 				BB32B1E320FF325800F67A36 /* Info.plist */,
 				BB32B1EB20FF32AD00F67A36 /* TabViewDemo-Bridging-Header.h */,
+				BB2A60AF2104575200EE8682 /* TabView.swift */,
+				BB5B3B28210777E800946B86 /* TabItemCell.swift */,
 			);
 			path = TabViewDemo;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				BB32B1F020FF32AE00F67A36 /* WYTabView.m in Sources */,
 				BB32B1DA20FF325700F67A36 /* ViewController.swift in Sources */,
 				BB32B1F120FF32AE00F67A36 /* WYSimpleTabItemView.m in Sources */,
+				BB5B3B29210777E800946B86 /* TabItemCell.swift in Sources */,
 				BB32B1D820FF325700F67A36 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
