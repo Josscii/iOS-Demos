@@ -26,7 +26,12 @@ extension TabViewDelegate {
 }
 
 public protocol TabItem {
+    func setup(with widthType: TabViewWidthType)
     func update(with progress: CGFloat)
+}
+
+extension TabItem {
+    func setup(with widthType: TabViewWidthType) {}
 }
 
 public enum TabViewWidthType {
@@ -185,7 +190,7 @@ extension TabView {
             index = index0
         }
         
-        // update scrollView contentOffset and select state
+        // update collectionView contentOffset and select state
         updateCell(with: index)
         
         // update the indicator, progress 0 -> 1 -> 0
@@ -211,46 +216,37 @@ extension TabView {
     }
     
     private func updateCell(with index: Int) {
+        selectedIndex = index
         // scroll the cell at index to center and select it
-        scrollToCenter(with: index) {
-            self.selectItem(at: index)
-        }
+        selectItem(at: index)
+        scrollToCenter(with: index)
     }
     
     private func selectItem(at index: Int) {
         collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: false, scrollPosition: .top)
     }
     
-    private func scrollToCenter(with index: Int, completion: @escaping () -> Void) {
-        let maxOffsetX = collectionView.contentSize.width - collectionView.bounds.width
-        
-        // if the collectionView can't scroll, we just complete and return
-        if maxOffsetX < 0 {
-            completion()
-            return
-        }
-        
-        // if the cell at index is here, just in case
-        guard let frame = frameForCell(at: index) else {
-            return
-        }
-        
-        // x must > 0 and < max offset x
-        let x = min(max(frame.midX - collectionView.bounds.width / 2, 0), maxOffsetX)
-        
-        UIView.animate(withDuration: animationDuration, animations: {
-            self.collectionView.contentOffset.x = x
-        }, completion: { _ in
-            completion()
-        })
+    private func scrollToCenter(with index: Int) {
+        collectionView.setValue(animationDuration, forKey: "contentOffsetAnimationDuration")
+        collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
     }
 }
 
 extension TabView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedIndex = indexPath.item
+        // animate update the previous cell
+        UIView.animate(withDuration: animationDuration) {
+            let cell = self.cell(at: self.selectedIndex) as? TabItem
+            cell?.update(with: 1)
+        }
         
-        updateCell(with: selectedIndex)
+        updateCell(with: indexPath.item)
+        
+        // animate update the selected cell
+        UIView.animate(withDuration: animationDuration) {
+            let cell = self.cell(at: self.selectedIndex) as? TabItem
+            cell?.update(with: 0)
+        }
         
         UIView.animate(withDuration: animationDuration) {
             self.coordinatedScrollView.contentOffset.x = CGFloat(self.selectedIndex) * self.coordinatedScrollView.bounds.width
@@ -262,7 +258,6 @@ extension TabView: UICollectionViewDelegate {
 
 extension TabView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
         if isFirstInit && indexPath.item == 0 {
             defer {
                 isFirstInit = false
@@ -275,11 +270,12 @@ extension TabView: UICollectionViewDataSource {
             // init indicatorViews
             indicatorSuperView.frame = cell.frame
             indicatorView = delegate?.tabView(self, indicatorViewWith: indicatorSuperView)
-            
-            // update first tabItem
-            let tabItem = cell as? TabItem
-            tabItem?.update(with: 0)
         }
+        
+        // update tabItem
+        let progress: CGFloat = cell.isSelected ? 0 : 1
+        let tabItem = cell as? TabItem
+        tabItem?.update(with: progress)
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -295,6 +291,12 @@ extension TabView: UICollectionViewDataSource {
             fatalError("delegate must not be nil")
         }
         
-        return delegate.tabView(self, cellForItemAt: indexPath.item)
+        let cell = delegate.tabView(self, cellForItemAt: indexPath.item)
+        
+        if let item = cell as? TabItem {
+            item.setup(with: widthType)
+        }
+        
+        return cell
     }
 }
