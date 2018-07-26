@@ -29,15 +29,15 @@ class ViewController: UIViewController {
 //        tabView.itemWidth = 100
 //        view.addSubview(tabView)
         
-        tabView1 = TabView(frame: CGRect(x: 0, y: 100, width: view.bounds.width, height: 100), coordinatedScrollView: scrollView)
+        tabView1 = TabView(frame: CGRect(x: 0, y: 100, width: view.bounds.width, height: 50), coordinatedScrollView: scrollView)
         tabView1.delegate = self
 //        tabView1.backgroundColor = .green
-        tabView1.widthType = .fixed(width: 60)
+        tabView1.widthType = .selfSizing
         tabView1.register(TabItemCell.self, forCellWithReuseIdentifier: TabItemCell.reuseIdentifier)
         view.addSubview(tabView1)
     }
     
-    var items = ["呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无", "呜呜无"]
+    var items = ["哈哈", "嘻嘻嘻", "嗯", "不要啊啊", "确定", "来抱抱", "不行啊"]
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        tabView.reloadData()
@@ -102,13 +102,18 @@ extension ViewController: TabViewDelegate {
 //        indicatorView.center.x = centerX
 //    }
 //    
-//    func tabView(_ tabView: TabView, indicatorViewWith superView: UIView) -> UIView? {
-//        let view = UIView()
-//        view.backgroundColor = .red
-//        view.frame = CGRect(x: (superView.frame.width-10)/2, y: 0, width: 10, height: 2)
-//        superView.addSubview(view)
-//        return view
-//    }
+    func tabView(_ tabView: TabView, indicatorViewWith superView: UIView) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .red
+        view.layer.cornerRadius = 10
+        view.translatesAutoresizingMaskIntoConstraints = false
+        superView.addSubview(view)
+        view.topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
+        view.leftAnchor.constraint(equalTo: superView.leftAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
+        view.rightAnchor.constraint(equalTo: superView.rightAnchor).isActive = true
+        return view
+    }
     
     func numberOfItems(in tabView: TabView) -> Int {
         return items.count
@@ -122,6 +127,7 @@ extension ViewController: TabViewDelegate {
 //        cell.selectedFontSize = 18
 //        cell.normalFontSize = 15
 //        cell.isTextColorProgressiveChange = true
+        cell.selectedTextColor = .white
         
         return cell
     }

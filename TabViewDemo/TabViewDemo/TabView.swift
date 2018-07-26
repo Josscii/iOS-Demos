@@ -45,6 +45,7 @@ public class TabView: UIView {
     public weak var delegate: TabViewDelegate?
     public var animationDuration: Double = 0.25
     public var widthType: TabViewWidthType = .evenly
+    public var isGestureDriven = true
     
     private var collectionView: UICollectionView!
     private var collectionViewLayout: UICollectionViewFlowLayout!
@@ -208,7 +209,20 @@ extension TabView {
     private func updateIndicatorView(with progress: CGFloat) {
         delegate?.tabView(self, update: indicatorView, with: progress)
     }
-    
+           
+    /*
+     left item
+     
+     1 -> 0
+     
+     0 <- 1
+     
+     right item
+     
+     0 -> 1
+     
+     1 <- 0
+     */
     private func updateTabItem(from index0: Int, to index1: Int, with progress: CGFloat) {
         updateTabItem(with: index0, and: progress)
         updateTabItem(with: index1, and: 1-progress)
@@ -222,16 +236,11 @@ extension TabView {
     private func updateCell(with index: Int) {
         selectedIndex = index
         selectItem(at: index)
-        scrollToCenter(with: index)
     }
     
     private func selectItem(at index: Int) {
-        collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: false, scrollPosition: .top)
-    }
-    
-    private func scrollToCenter(with index: Int) {
         collectionView.setValue(animationDuration, forKey: "contentOffsetAnimationDuration")
-        collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
+        collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
     }
 }
 
