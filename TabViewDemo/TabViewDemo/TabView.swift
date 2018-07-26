@@ -45,7 +45,8 @@ public class TabView: UIView {
     public weak var delegate: TabViewDelegate?
     public var animationDuration: Double = 0.25
     public var widthType: TabViewWidthType = .evenly
-    public var isGestureDriven = true
+    public var isIndicatorGestureDriven = true
+    public var isItemGestureDriven = false
     
     private var collectionView: UICollectionView!
     private var collectionViewLayout: UICollectionViewFlowLayout!
@@ -176,16 +177,55 @@ extension TabView {
         let index1 = Int(ceil(quotient))
         
         // update the indicatorSuperView's frame
-        if let frame0 = frameForCell(at: index0), let frame1 = frameForCell(at: index1) {
-            let ix = frame0.origin.x + (frame1.origin.x - frame0.origin.x) * decimal
-            let iy = frame0.origin.y
-            let iwidth = frame0.size.width + (frame1.size.width - frame0.size.width) * decimal
-            let iheight = frame0.size.height
-            indicatorSuperView.frame = CGRect(x: ix, y: iy, width: iwidth, height: iheight)
+        if isIndicatorGestureDriven {
+            if let frame0 = frameForCell(at: index0), let frame1 = frameForCell(at: index1) {
+                let ix = frame0.origin.x + (frame1.origin.x - frame0.origin.x) * decimal
+                let iy = frame0.origin.y
+                let iwidth = frame0.size.width + (frame1.size.width - frame0.size.width) * decimal
+                let iheight = frame0.size.height
+                indicatorSuperView.frame = CGRect(x: ix, y: iy, width: iwidth, height: iheight)
+            }
+        } else {
+            if index0 == selectedIndex && decimal >= 0.5 {
+                UIView.animate(withDuration: animationDuration) {
+                    if let frame1 = self.frameForCell(at: index1) {
+                        self.indicatorSuperView.frame = frame1
+                        self.indicatorSuperView.layoutIfNeeded()
+                    }
+                }
+            } else if index1 == selectedIndex && decimal <= 0.5 {
+                UIView.animate(withDuration: animationDuration) {
+                    if let frame0 = self.frameForCell(at: index0) {
+                        self.indicatorSuperView.frame = frame0
+                        self.indicatorSuperView.layoutIfNeeded()
+                    }
+                }
+            }
         }
         
         if decimal == 0 {
             return
+        }
+        
+        if isIndicatorGestureDriven {
+            // update the indicator, progress 0...1...0
+            let progress = (0.5 - abs(0.5 - decimal)) * 2
+            updateIndicatorView(with: progress)
+        }
+        
+        if isItemGestureDriven {
+            // update the tabItems, decimal 0...1
+            updateTabItem(from: index0, to: index1, with: decimal)
+        } else {
+            if index0 == selectedIndex && decimal >= 0.5 {
+                UIView.animate(withDuration: animationDuration) {
+                    self.updateTabItem(from: index0, to: index1, with: 1)
+                }
+            } else if index1 == selectedIndex && decimal <= 0.5 {
+                UIView.animate(withDuration: animationDuration) {
+                    self.updateTabItem(from: index0, to: index1, with: 0)
+                }
+            }
         }
         
         let index: Int
@@ -197,35 +237,19 @@ extension TabView {
         
         // update collectionView contentOffset and select state
         updateCell(with: index)
-        
-        // update the indicator, progress 0 -> 1 -> 0
-        let progress = (0.5 - abs(0.5 - decimal)) * 2
-        updateIndicatorView(with: progress)
-        
-        // update the tabItems, decimal 0 -> 1
-        updateTabItem(from: index0, to: index1, with: decimal)
     }
     
+    /// the progress is alaways 0->1->0
     private func updateIndicatorView(with progress: CGFloat) {
         delegate?.tabView(self, update: indicatorView, with: progress)
     }
-           
-    /*
-     left item
-     
-     1 -> 0
-     
-     0 <- 1
-     
-     right item
-     
-     0 -> 1
-     
-     1 <- 0
-     */
+    
+    /// 0 means item in normal state, 1 means item in selected state.
+    /// when the scroll direction is `<-`, the left item's progress is 1 to 0, the right item's progress is 0 to 1.
+    /// when the scroll direction is `->`, the left item's progress is 0 to 1, the right item's progress is 1 to 0.
     private func updateTabItem(from index0: Int, to index1: Int, with progress: CGFloat) {
-        updateTabItem(with: index0, and: progress)
-        updateTabItem(with: index1, and: 1-progress)
+        updateTabItem(with: index0, and: 1-progress)
+        updateTabItem(with: index1, and: progress)
     }
     
     private func updateTabItem(with index: Int, and progress: CGFloat) {
@@ -249,7 +273,7 @@ extension TabView: UICollectionViewDelegate {
         // animate update the previous cell
         UIView.animate(withDuration: animationDuration) {
             let cell = self.cell(at: self.selectedIndex) as? TabItem
-            cell?.update(with: 1)
+            cell?.update(with: 0)
         }
         
         updateCell(with: indexPath.item)
@@ -257,7 +281,7 @@ extension TabView: UICollectionViewDelegate {
         // animate update the selected cell
         UIView.animate(withDuration: animationDuration) {
             let cell = self.cell(at: self.selectedIndex) as? TabItem
-            cell?.update(with: 0)
+            cell?.update(with: 1)
         }
         
         // animate coordinatedScrollView contentOffset
@@ -287,7 +311,7 @@ extension TabView: UICollectionViewDataSource {
         }
         
         // update tabItem
-        let progress: CGFloat = cell.isSelected ? 0 : 1
+        let progress: CGFloat = cell.isSelected ? 1 : 0
         let tabItem = cell as? TabItem
         tabItem?.update(with: progress)
     }

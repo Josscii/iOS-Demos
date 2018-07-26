@@ -90,9 +90,9 @@ public class TabItemCell: UICollectionViewCell {
     private func labelTransform(with progress: CGFloat) {
         let scale: CGFloat
         if selectedFontSize > normalFontSize {
+            let progress = 1 - progress
             scale = 1 - (selectedFontSize / normalFontSize - 1) * progress
         } else {
-            let progress =  1 - progress
             scale = 1 - (normalFontSize / selectedFontSize - 1) * progress
         }
         
@@ -112,7 +112,7 @@ public class TabItemCell: UICollectionViewCell {
     public var selectedTextColor: UIColor = .red
     
     private func colorTransform(with progress: CGFloat) {
-        titleLabel.textColor = UIColor.interpolate(from: selectedTextColor, to: normalTextColor, with: progress)
+        titleLabel.textColor = UIColor.interpolate(from: normalTextColor, to: selectedTextColor, with: progress)
     }
 }
 

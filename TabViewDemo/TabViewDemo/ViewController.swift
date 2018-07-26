@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         tabView1 = TabView(frame: CGRect(x: 0, y: 100, width: view.bounds.width, height: 50), coordinatedScrollView: scrollView)
         tabView1.delegate = self
 //        tabView1.backgroundColor = .green
-        tabView1.widthType = .selfSizing
+        tabView1.widthType = .fixed(width: 80)
         tabView1.register(TabItemCell.self, forCellWithReuseIdentifier: TabItemCell.reuseIdentifier)
         view.addSubview(tabView1)
     }
@@ -123,10 +123,10 @@ extension ViewController: TabViewDelegate {
         let cell = tabView.dequeueReusableCell(withReuseIdentifier: TabItemCell.reuseIdentifier, for: index) as! TabItemCell
         
         cell.titleLabel.text = items[index]
-//        cell.isFontSizeProgressiveChange = true
-//        cell.selectedFontSize = 18
-//        cell.normalFontSize = 15
-//        cell.isTextColorProgressiveChange = true
+        cell.isFontSizeProgressiveChange = true
+        cell.selectedFontSize = 18
+        cell.normalFontSize = 15
+        cell.isTextColorProgressiveChange = true
         cell.selectedTextColor = .white
         
         return cell
