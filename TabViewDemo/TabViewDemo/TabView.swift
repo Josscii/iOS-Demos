@@ -263,6 +263,13 @@ extension TabView {
     }
     
     private func selectItem(at index: Int) {
+        collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: false, scrollPosition: .init(rawValue: 0))
+        UIView.animate(withDuration: animationDuration) {
+            self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: false)
+        }
+    }
+    
+    private func selectItem_bad(at index: Int) {
         collectionView.setValue(animationDuration, forKey: "contentOffsetAnimationDuration")
         collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
     }
