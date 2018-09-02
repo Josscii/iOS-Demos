@@ -28,6 +28,7 @@ extension TabViewDelegate {
 public protocol TabItem {
     func setup(with widthType: TabViewWidthType)
     func update(with progress: CGFloat)
+    func update(with selected: Bool)
 }
 
 extension TabItem {
@@ -236,7 +237,7 @@ extension TabView {
         }
         
         // update collectionView contentOffset and select state
-        updateCell(with: index)
+        updateSelectedAndContentOffset(with: index)
     }
     
     /// the progress is alaways 0->1->0
@@ -257,11 +258,27 @@ extension TabView {
         tabItem?.update(with: progress)
     }
     
-    private func updateCell(with index: Int) {
+    private func updateSelectedAndContentOffset(with index: Int) {
         selectedIndex = index
-        selectItem(at: index)
+        scrollToItem(at: selectedIndex)
     }
     
+    private func scrollToItem(at index: Int) {
+        UIView.animate(withDuration: animationDuration) {
+            self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: false)
+        }
+    }
+    
+    private func updateTabItem(with index: Int, animated: Bool) {
+        let preSelectedItem = cell(at: selectedIndex) as? TabItem
+        preSelectedItem?.update(with: false)
+        selectedIndex = index
+        let selectedItem = cell(at: selectedIndex) as? TabItem
+        selectedItem?.update(with: true)
+        scrollToItem(at: selectedIndex)
+    }
+    
+    /// deprecated
     private func selectItem(at index: Int) {
         collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: false, scrollPosition: .init(rawValue: 0))
         UIView.animate(withDuration: animationDuration) {
@@ -269,6 +286,7 @@ extension TabView {
         }
     }
     
+    /// deprecated
     private func selectItem_bad(at index: Int) {
         collectionView.setValue(animationDuration, forKey: "contentOffsetAnimationDuration")
         collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
@@ -280,15 +298,15 @@ extension TabView: UICollectionViewDelegate {
         // animate update the previous cell
         UIView.animate(withDuration: animationDuration) {
             let cell = self.cell(at: self.selectedIndex) as? TabItem
-            cell?.update(with: 0)
+            cell?.update(with: false)
         }
         
-        updateCell(with: indexPath.item)
+        updateSelectedAndContentOffset(with: indexPath.item)
         
         // animate update the selected cell
         UIView.animate(withDuration: animationDuration) {
             let cell = self.cell(at: self.selectedIndex) as? TabItem
-            cell?.update(with: 1)
+            cell?.update(with: true)
         }
         
         // animate coordinatedScrollView contentOffset
@@ -308,19 +326,10 @@ extension TabView: UICollectionViewDataSource {
                 isFirstInit = false
             }
             
-            // select first cell
-            selectItem(at: 0)
-            cell.isSelected = true
-            
             // init indicatorViews
             indicatorSuperView.frame = cell.frame
             indicatorView = delegate?.tabView(self, indicatorViewWith: indicatorSuperView)
         }
-        
-        // update tabItem
-        let progress: CGFloat = cell.isSelected ? 1 : 0
-        let tabItem = cell as? TabItem
-        tabItem?.update(with: progress)
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -340,6 +349,7 @@ extension TabView: UICollectionViewDataSource {
         
         if let item = cell as? TabItem {
             item.setup(with: widthType)
+            item.update(with: indexPath.item == selectedIndex)
         }
         
         return cell
