@@ -10,12 +10,16 @@ import UIKit
 
 public class TabItemCell: UICollectionViewCell {
     public static let reuseIdentifier = "TabItemCell"
-    
     public var titleLabel = UILabel()
+    public var margin: CGFloat = 8
+    public var normalFontSize: CGFloat = 17
+    public var selectedFontSize: CGFloat = 17
+    public var isSelectedTextBold = false
+    public var normalTextColor: UIColor = .black
+    public var selectedTextColor: UIColor = .red
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupViews()
     }
     
@@ -25,94 +29,83 @@ public class TabItemCell: UICollectionViewCell {
     
     public func setupViews() {
         contentView.addSubview(titleLabel)
-        setupFontSizeAndTransform()
-    }
-    
-    public var margin: CGFloat = 8
-    
-    // font related
-    
-//    public var isFontSizeProgressiveChange = false {
-//        didSet {
-//            setupFontSizeAndTransform()
-//        }
-//    }
-    
-    public var normalFontSize: CGFloat = 17 {
-        didSet {
-            setupFontSizeAndTransform()
-        }
-    }
-    
-    public var selectedFontSize: CGFloat = 17 {
-        didSet {
-            setupFontSizeAndTransform()
-        }
-    }
-    
-    private func setupFontSizeAndTransform() {
-        if normalFontSize != selectedFontSize {
-            if selectedFontSize > normalFontSize {
-                titleLabel.font = UIFont.systemFont(ofSize: selectedFontSize)
-                
-                let scale = normalFontSize / selectedFontSize;
-                titleLabel.transform = CGAffineTransform(scaleX: scale, y: scale)
-            } else {
-                titleLabel.font = UIFont.systemFont(ofSize: normalFontSize)
-                titleLabel.transform = .identity
-            }
-        } else {
-            titleLabel.font = UIFont.systemFont(ofSize: normalFontSize)
-            titleLabel.transform = .identity
-        }
     }
     
     private func labelTransform(with progress: CGFloat) {
         if selectedFontSize != normalFontSize {
             let scale: CGFloat
+            
+            let small: CGFloat
+            let big: CGFloat
+            
             if selectedFontSize > normalFontSize {
-                let progress = 1 - progress
-                scale = 1 - (selectedFontSize / normalFontSize - 1) * progress
+                small = normalFontSize
+                big = selectedFontSize
             } else {
-                scale = 1 - (normalFontSize / selectedFontSize - 1) * progress
+                small = selectedFontSize
+                big = normalFontSize
             }
+            
+            scale = (small+(big-small) * progress)/big
             
             titleLabel.transform = CGAffineTransform.init(scaleX: scale, y: scale)
         }
         
         if progress == 1 {
-            if isSelectedTextBold {
-                titleLabel.font = UIFont.boldSystemFont(ofSize: selectedFontSize)
-            } else {
-                titleLabel.font = UIFont.systemFont(ofSize: selectedFontSize)
-            }
-            
-            titleLabel.textColor = selectedTextColor
+            self.updateTitleFont(selected: true)
         } else {
-            titleLabel.font = UIFont.systemFont(ofSize: normalFontSize)
-            
-            titleLabel.textColor = normalTextColor
+            self.updateTitleFont(selected: false)
         }
     }
-    
-    // text color related
-    
-//    public var isTextColorProgressiveChange = false
-    
-    public var normalTextColor: UIColor = .black {
-        didSet {
-            titleLabel.textColor = normalTextColor
-        }
-    }
-    
-    public var selectedTextColor: UIColor = .red
     
     private func colorTransform(with progress: CGFloat) {
         titleLabel.textColor = UIColor.interpolate(from: normalTextColor, to: selectedTextColor, with: progress)
     }
     
-    // bold related
-    public var isSelectedTextBold = false
+    public func updateTitleFont(selected: Bool) {
+        if selectedFontSize != normalFontSize {
+            if isSelectedTextBold && selected {
+                titleLabel.font = UIFont.boldSystemFont(ofSize: selectedFontSize)
+            } else {
+                titleLabel.font = UIFont.systemFont(ofSize: selectedFontSize)
+            }
+        } else {
+            if isSelectedTextBold && selected {
+                titleLabel.font = UIFont.boldSystemFont(ofSize: normalFontSize)
+            } else {
+                titleLabel.font = UIFont.systemFont(ofSize: normalFontSize)
+            }
+        }
+    }
+    
+    private func updateTitleTransform(selected: Bool) {
+        let scale: CGFloat
+        if selectedFontSize > normalFontSize {
+            scale = normalFontSize / selectedFontSize
+            
+            if selected {
+                titleLabel.transform = .identity
+            } else {
+                titleLabel.transform = CGAffineTransform.init(scaleX: scale, y: scale)
+            }
+        } else {
+            scale = selectedFontSize / normalFontSize
+            
+            if selected {
+                titleLabel.transform = CGAffineTransform.init(scaleX: scale, y: scale)
+            } else {
+                titleLabel.transform = .identity
+            }
+        }
+    }
+    
+    private func updateTitleColor(selected: Bool) {
+        if selected {
+            titleLabel.textColor = selectedTextColor
+        } else {
+            titleLabel.textColor = normalTextColor
+        }
+    }
 }
 
 extension TabItemCell: TabItem {
@@ -122,48 +115,9 @@ extension TabItemCell: TabItem {
     }
     
     public func update(with selected: Bool) {
-        if selected {
-            titleLabel.textColor = selectedTextColor
-        } else {
-            titleLabel.textColor = normalTextColor
-        }
-        
-        if selectedFontSize != normalFontSize {
-            if selected {
-                if isSelectedTextBold {
-                    titleLabel.font = UIFont.boldSystemFont(ofSize: selectedFontSize)
-                } else {
-                    titleLabel.font = UIFont.systemFont(ofSize: selectedFontSize)
-                }
-            } else {
-                titleLabel.font = UIFont.systemFont(ofSize: normalFontSize)
-            }
-            
-            let scale: CGFloat
-            if selectedFontSize > normalFontSize {
-                scale = 1 - (selectedFontSize / normalFontSize - 1)
-                
-                if selected {
-                    titleLabel.transform = .identity
-                } else {
-                    titleLabel.transform = CGAffineTransform.init(scaleX: scale, y: scale)
-                }
-            } else {
-                scale = 1 - (normalFontSize / selectedFontSize - 1)
-                
-                if selected {
-                    titleLabel.transform = CGAffineTransform.init(scaleX: scale, y: scale)
-                } else {
-                    titleLabel.transform = .identity
-                }
-            }
-        } else {
-            if selected && isSelectedTextBold {
-                titleLabel.font = UIFont.boldSystemFont(ofSize: normalFontSize)
-            } else {
-                titleLabel.font = UIFont.systemFont(ofSize: normalFontSize)
-            }
-        }
+        updateTitleFont(selected: selected)
+        updateTitleTransform(selected: selected)
+        updateTitleColor(selected: selected)
     }
     
     public func setup(with widthType: TabViewWidthType) {

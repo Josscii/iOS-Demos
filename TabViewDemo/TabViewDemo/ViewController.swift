@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView = UIScrollView(frame: CGRect(x: 0, y: 400, width: view.bounds.width, height: 200))
+        scrollView = UIScrollView(frame: CGRect(x: 0, y: 200, width: view.bounds.width, height: 200))
         scrollView.contentSize = CGSize(width: view.bounds.width * CGFloat(items.count), height: 200)
         view.addSubview(scrollView)
         scrollView.isPagingEnabled = true
@@ -33,8 +33,8 @@ class ViewController: UIViewController {
         tabView1.delegate = self
 //        tabView1.isItemGestureDriven = true
 //        tabView1.backgroundColor = .green
-        tabView1.isIndicatorGestureDriven = false
-        tabView1.widthType = .fixed(width: 80)
+        tabView1.isIndicatorGestureDriven = true
+        tabView1.widthType = .selfSizing
         tabView1.register(TabItemCell.self, forCellWithReuseIdentifier: TabItemCell.reuseIdentifier)
         view.addSubview(tabView1)
     }
@@ -96,14 +96,14 @@ extension ViewController: TabViewDelegate {
 //            let indicatorSuperView = indicatorView.superview else {
 //                return
 //        }
-//        
+//
 //        let w = 10 + (30 - 10) * progress
 //        let centerX = indicatorSuperView.frame.width / 2
-//        
+//
 //        indicatorView.frame.size.width = w
 //        indicatorView.center.x = centerX
 //    }
-//    
+    
     func tabView(_ tabView: TabView, indicatorViewWith superView: UIView) -> UIView? {
         let view = UIView()
         view.backgroundColor = .red
@@ -125,10 +125,8 @@ extension ViewController: TabViewDelegate {
         let cell = tabView.dequeueReusableCell(withReuseIdentifier: TabItemCell.reuseIdentifier, for: index) as! TabItemCell
         
         cell.titleLabel.text = items[index]
-//        cell.isFontSizeProgressiveChange = true
-//        cell.selectedFontSize = 18
-//        cell.normalFontSize = 15
-//        cell.isTextColorProgressiveChange = true
+        cell.selectedFontSize = 18
+        cell.normalFontSize = 15
         cell.isSelectedTextBold = true
         cell.selectedTextColor = .white
         

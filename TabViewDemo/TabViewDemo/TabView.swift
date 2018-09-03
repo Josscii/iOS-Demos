@@ -167,7 +167,7 @@ extension TabView {
         let contentWidth = coordinatedScrollView.contentSize.width
         
         let quotient = contentOffsetX / scrollViewWidth
-        let decimal = fmod(quotient, 1)
+        var decimal = fmod(quotient, 1)
         
         let max = (contentWidth / scrollViewWidth) - 1
         if quotient < 0 || quotient > max {
@@ -191,21 +191,23 @@ extension TabView {
                 UIView.animate(withDuration: animationDuration) {
                     if let frame1 = self.frameForCell(at: index1) {
                         self.indicatorSuperView.frame = frame1
-                        self.indicatorSuperView.layoutIfNeeded()
                     }
                 }
             } else if index1 == selectedIndex && decimal <= 0.5 {
                 UIView.animate(withDuration: animationDuration) {
                     if let frame0 = self.frameForCell(at: index0) {
                         self.indicatorSuperView.frame = frame0
-                        self.indicatorSuperView.layoutIfNeeded()
                     }
                 }
             }
         }
         
         if decimal == 0 {
-            return
+            if index0 == selectedIndex {
+                decimal = 1
+            } else if index1 == selectedIndex {
+                decimal = 0
+            }
         }
         
         if isIndicatorGestureDriven {
@@ -217,6 +219,7 @@ extension TabView {
         if isItemGestureDriven {
             // update the tabItems, decimal 0...1
             updateTabItem(from: index0, to: index1, with: decimal)
+            print(decimal)
         } else {
             if index0 == selectedIndex && decimal >= 0.5 {
                 UIView.animate(withDuration: animationDuration) {
@@ -267,29 +270,6 @@ extension TabView {
         UIView.animate(withDuration: animationDuration) {
             self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: false)
         }
-    }
-    
-    private func updateTabItem(with index: Int, animated: Bool) {
-        let preSelectedItem = cell(at: selectedIndex) as? TabItem
-        preSelectedItem?.update(with: false)
-        selectedIndex = index
-        let selectedItem = cell(at: selectedIndex) as? TabItem
-        selectedItem?.update(with: true)
-        scrollToItem(at: selectedIndex)
-    }
-    
-    /// deprecated
-    private func selectItem(at index: Int) {
-        collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: false, scrollPosition: .init(rawValue: 0))
-        UIView.animate(withDuration: animationDuration) {
-            self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: false)
-        }
-    }
-    
-    /// deprecated
-    private func selectItem_bad(at index: Int) {
-        collectionView.setValue(animationDuration, forKey: "contentOffsetAnimationDuration")
-        collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
     }
 }
 
