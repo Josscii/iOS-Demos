@@ -31,9 +31,9 @@ class ViewController: UIViewController {
         
         tabView1 = TabView(frame: CGRect(x: 0, y: 100, width: view.bounds.width, height: 50), coordinatedScrollView: scrollView)
         tabView1.delegate = self
-        tabView1.isItemGestureDriven = true
-//        tabView1.backgroundColor = .green
-//        tabView1.isIndicatorGestureDriven = true
+//        tabView1.isItemGestureDriven = true
+        tabView1.backgroundColor = .green
+        tabView1.isIndicatorGestureDriven = true
         tabView1.widthType = .selfSizing
         tabView1.register(TabItemCell.self, forCellWithReuseIdentifier: TabItemCell.reuseIdentifier)
         view.addSubview(tabView1)
@@ -91,30 +91,36 @@ extension ViewController: WYTabViewDelegate {
 }
 
 extension ViewController: TabViewDelegate {
-//    func tabView(_ tabView: TabView, update indicatorView: UIView?, with progress: CGFloat) {
-//        guard let indicatorView = indicatorView,
-//            let indicatorSuperView = indicatorView.superview else {
-//                return
-//        }
-//
-//        let w = 10 + (30 - 10) * progress
-//        let centerX = indicatorSuperView.frame.width / 2
-//
-//        indicatorView.frame.size.width = w
-//        indicatorView.center.x = centerX
-//    }
+    func tabView(_ tabView: TabView, update indicatorView: UIView?, with progress: CGFloat) {
+        guard let indicatorView = indicatorView,
+            let indicatorSuperView = indicatorView.superview else {
+                return
+        }
+
+        let w = 10 + (30 - 10) * progress
+        let centerX = indicatorSuperView.frame.width / 2
+
+        indicatorView.frame.size.width = w
+        indicatorView.center.x = centerX
+    }
     
     func tabView(_ tabView: TabView, indicatorViewWith superView: UIView) -> UIView? {
         let view = UIView()
         view.backgroundColor = .red
-        view.layer.cornerRadius = 10
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.frame = CGRect(x: (superView.bounds.width - 10)/2, y: 0, width: 10, height: 2)
         superView.addSubview(view)
-        view.topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
-        view.leftAnchor.constraint(equalTo: superView.leftAnchor).isActive = true
-        view.bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
-        view.rightAnchor.constraint(equalTo: superView.rightAnchor).isActive = true
+        
         return view
+//        let view = UIView()
+//        view.backgroundColor = .red
+//        view.layer.cornerRadius = 10
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        superView.addSubview(view)
+//        view.topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
+//        view.leftAnchor.constraint(equalTo: superView.leftAnchor).isActive = true
+//        view.bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
+//        view.rightAnchor.constraint(equalTo: superView.rightAnchor).isActive = true
+//        return view
     }
     
     func numberOfItems(in tabView: TabView) -> Int {
@@ -125,10 +131,8 @@ extension ViewController: TabViewDelegate {
         let cell = tabView.dequeueReusableCell(withReuseIdentifier: TabItemCell.reuseIdentifier, for: index) as! TabItemCell
         
         cell.titleLabel.text = items[index]
-        cell.selectedFontSize = 18
-        cell.normalFontSize = 15
-        cell.isSelectedTextBold = true
-        cell.selectedTextColor = .white
+//        cell.normalTextFont = UIFont.boldSystemFont(ofSize: 17)
+        cell.selectedTextFont = UIFont.systemFont(ofSize: 20)
         
         return cell
     }

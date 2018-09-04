@@ -78,6 +78,11 @@ extension TabItem {
     func update(with selected: Bool) {}
 }
 
+/// tab item width type
+///
+/// - fixed: fixed width
+/// - evenly: divide the tab view' width evenly
+/// - selfSizing: use the tab item's internal size
 public enum TabViewWidthType {
     case fixed(width: CGFloat)
     case evenly
@@ -257,14 +262,6 @@ extension TabView {
             }
         }
         
-        if decimal == 0 {
-            if index0 == selectedIndex {
-                decimal = 1
-            } else if index1 == selectedIndex {
-                decimal = 0
-            }
-        }
-        
         if isIndicatorGestureDriven {
             // update the indicator, progress 0...1...0
             let progress = (0.5 - abs(0.5 - decimal)) * 2
@@ -272,6 +269,11 @@ extension TabView {
         }
         
         if isItemGestureDriven {
+            // if index0 equals to index1, means it finished transition
+            if index0 == index1 {
+                decimal = 1
+            }
+            
             // update the tabItems, decimal 0...1
             updateTabItem(from: index0, to: index1, with: decimal)
         } else {
@@ -289,15 +291,17 @@ extension TabView {
             }
         }
         
+        // update the select index based on decimal
         let index: Int
         if decimal > 0.5 {
             index = index1
         } else {
             index = index0
         }
+        selectedIndex = index
         
-        // update collectionView contentOffset and select state
-        updateSelectedAndContentOffset(with: index)
+        // scroll the collectionView to index
+        scrollToItem(at: index)
     }
     
     /// the progress is alaways 0->1->0
@@ -318,11 +322,6 @@ extension TabView {
         tabItem?.update(with: progress)
     }
     
-    private func updateSelectedAndContentOffset(with index: Int) {
-        selectedIndex = index
-        scrollToItem(at: selectedIndex)
-    }
-    
     private func scrollToItem(at index: Int) {
         UIView.animate(withDuration: 0.25) {
             self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: false)
@@ -332,13 +331,17 @@ extension TabView {
 
 extension TabView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // animate update the previous cell
+        // animate update the previous selected cell
         UIView.animate(withDuration: animationDuration) {
             let cell = self.cell(at: self.selectedIndex) as? TabItem
             cell?.update(with: false)
         }
         
-        updateSelectedAndContentOffset(with: indexPath.item)
+        // update selected index
+        selectedIndex = indexPath.item
+        
+        // scroll the collectionView to index
+        scrollToItem(at: indexPath.item)
         
         // animate update the selected cell
         UIView.animate(withDuration: animationDuration) {
