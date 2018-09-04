@@ -31,9 +31,9 @@ class ViewController: UIViewController {
         
         tabView1 = TabView(frame: CGRect(x: 0, y: 100, width: view.bounds.width, height: 50), coordinatedScrollView: scrollView)
         tabView1.delegate = self
-//        tabView1.isItemGestureDriven = true
+        tabView1.isItemGestureDriven = true
 //        tabView1.backgroundColor = .green
-        tabView1.isIndicatorGestureDriven = true
+//        tabView1.isIndicatorGestureDriven = true
         tabView1.widthType = .selfSizing
         tabView1.register(TabItemCell.self, forCellWithReuseIdentifier: TabItemCell.reuseIdentifier)
         view.addSubview(tabView1)

@@ -8,14 +8,43 @@
 
 import UIKit
 
+/// TabView's delegate protocol
 public protocol TabViewDelegate: class {
-    // required
+    /// number of items in tabView, required
+    ///
+    /// - Parameter tabView: tabView
+    /// - Returns: number of items
     func numberOfItems(in tabView: TabView) -> Int
+    
+    /// cell item at index, required
+    ///
+    /// - Parameters:
+    ///   - tabView: tabView
+    ///   - index: index of item
+    /// - Returns: cell for item, must be a `UICollectionViewCell` subclass which comforms to `TabItem`
     func tabView(_ tabView: TabView, cellForItemAt index: Int) -> UICollectionViewCell
     
-    // optional
+    /// did select item at index, optional
+    ///
+    /// - Parameters:
+    ///   - tabView: tabView
+    ///   - index: index of the selected item
     func tabView(_ tabView: TabView, didSelectItemAt index: Int)
+    
+    /// configure the indicator view, optional
+    ///
+    /// - Parameters:
+    ///   - tabView: tabView
+    ///   - superView: indicator's superView
+    /// - Returns: indicator which must add to superView
     func tabView(_ tabView: TabView, indicatorViewWith superView: UIView) -> UIView?
+    
+    /// update the indicator view with transition progress, progress is 0->1->0
+    ///
+    /// - Parameters:
+    ///   - tabView: tabView
+    ///   - indicatorView: indicator
+    ///   - progress: the transition progress
     func tabView(_ tabView: TabView, update indicatorView: UIView?, with progress: CGFloat)
 }
 
@@ -25,14 +54,28 @@ extension TabViewDelegate {
     func tabView(_ tabView: TabView, update indicatorView: UIView?, with progress: CGFloat) {}
 }
 
+/// TabView's item protocol
 public protocol TabItem {
+    /// configure the tab item with widthType
+    ///
+    /// - Parameter widthType: widthType of items in tabView
     func setup(with widthType: TabViewWidthType)
+    
+    /// update item view with progress
+    ///
+    /// - Parameter progress: the progress is always 0->1
     func update(with progress: CGFloat)
+    
+    /// update item view with selected state
+    ///
+    /// - Parameter selected: if the item is selected
     func update(with selected: Bool)
 }
 
 extension TabItem {
     func setup(with widthType: TabViewWidthType) {}
+    func update(with progress: CGFloat) {}
+    func update(with selected: Bool) {}
 }
 
 public enum TabViewWidthType {
@@ -42,27 +85,36 @@ public enum TabViewWidthType {
 }
 
 public class TabView: UIView {
-    
+    /// TabView's delegate
     public weak var delegate: TabViewDelegate?
+    /// animation duration of tab item and indicator animation, set to 0 to disable animation
     public var animationDuration: Double = 0.25
+    /// item width type
     public var widthType: TabViewWidthType = .evenly
-    public var isIndicatorGestureDriven = true
+    /// if the indicator tranistion with gesture movement
+    public var isIndicatorGestureDriven = false
+    /// if the item's properties with gesture movement
     public var isItemGestureDriven = false
     
+    /// internal collectionView
     private var collectionView: UICollectionView!
+    /// layout of collectinView
     private var collectionViewLayout: UICollectionViewFlowLayout!
+    /// the superview of indicator, you must always add your indicator to it
     private var indicatorSuperView: UIView!
+    /// indicator
     private var indicatorView: UIView?
+    /// the scrollView assioated with tabView
     private let coordinatedScrollView: UIScrollView
     
+    /// current selected index
     private var selectedIndex = 0
+    /// if is first init, a flag for some configuration
     private var isFirstInit = true
     
     public init(frame: CGRect, coordinatedScrollView: UIScrollView) {
         self.coordinatedScrollView = coordinatedScrollView
-        
         super.init(frame: frame)
-        
         setupViews()
     }
     
@@ -74,6 +126,7 @@ public class TabView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// subviews setup
     private func setupViews() {
         coordinatedScrollView.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
         
@@ -191,12 +244,14 @@ extension TabView {
                 UIView.animate(withDuration: animationDuration) {
                     if let frame1 = self.frameForCell(at: index1) {
                         self.indicatorSuperView.frame = frame1
+                        self.indicatorSuperView.layoutIfNeeded()
                     }
                 }
             } else if index1 == selectedIndex && decimal <= 0.5 {
                 UIView.animate(withDuration: animationDuration) {
                     if let frame0 = self.frameForCell(at: index0) {
                         self.indicatorSuperView.frame = frame0
+                        self.indicatorSuperView.layoutIfNeeded()
                     }
                 }
             }
@@ -219,15 +274,17 @@ extension TabView {
         if isItemGestureDriven {
             // update the tabItems, decimal 0...1
             updateTabItem(from: index0, to: index1, with: decimal)
-            print(decimal)
         } else {
-            if index0 == selectedIndex && decimal >= 0.5 {
-                UIView.animate(withDuration: animationDuration) {
-                    self.updateTabItem(from: index0, to: index1, with: 1)
-                }
-            } else if index1 == selectedIndex && decimal <= 0.5 {
-                UIView.animate(withDuration: animationDuration) {
-                    self.updateTabItem(from: index0, to: index1, with: 0)
+            // when index0 == index1, skip the animation
+            if index0 != index1 {
+                if index0 == selectedIndex && decimal >= 0.5 {
+                    UIView.animate(withDuration: animationDuration) {
+                        self.updateTabItem(from: index0, to: index1, with: 1)
+                    }
+                } else if index1 == selectedIndex && decimal <= 0.5 {
+                    UIView.animate(withDuration: animationDuration) {
+                        self.updateTabItem(from: index0, to: index1, with: 0)
+                    }
                 }
             }
         }
@@ -267,7 +324,7 @@ extension TabView {
     }
     
     private func scrollToItem(at index: Int) {
-        UIView.animate(withDuration: animationDuration) {
+        UIView.animate(withDuration: 0.25) {
             self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: false)
         }
     }
@@ -289,8 +346,16 @@ extension TabView: UICollectionViewDelegate {
             cell?.update(with: true)
         }
         
-        // animate coordinatedScrollView contentOffset
+        // animate indicator
         UIView.animate(withDuration: animationDuration) {
+            if let frame = self.frameForCell(at: indexPath.item) {
+                self.indicatorSuperView.frame = frame
+                self.indicatorSuperView.layoutIfNeeded()
+            }
+        }
+        
+        // animate coordinatedScrollView contentOffset
+        UIView.animate(withDuration: 0.25) {
             self.coordinatedScrollView.contentOffset.x = CGFloat(self.selectedIndex) * self.coordinatedScrollView.bounds.width
         }
         
