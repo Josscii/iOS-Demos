@@ -13,8 +13,7 @@ class SyncScrollViewManager: NSObject {
     var changeHeight: CGFloat = 0
     
     static let shared = SyncScrollViewManager()
-    
-    weak var outerScrollView: UIScrollView? {
+         weak var outerScrollView: UIScrollView? {
         didSet {
             oldValue?.removeObserver(self, forKeyPath: "bounds")
             outerScrollView?.addObserver(self, forKeyPath: "bounds", options: [.new], context: nil)

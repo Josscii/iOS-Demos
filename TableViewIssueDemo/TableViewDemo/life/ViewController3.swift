@@ -29,5 +29,15 @@ class ViewController3: UIViewController {
         print("viewDidLayoutSubviews")
         super.viewDidLayoutSubviews()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear")
+        super.viewDidAppear(animated)
+    }
 }
 

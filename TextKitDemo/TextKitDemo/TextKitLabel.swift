@@ -16,9 +16,9 @@ class TextSorage: NSTextStorage {
         return storage.string
     }
     
-    override func attributes(at location: Int, effectiveRange range: NSRangePointer?) -> [String : Any] {
-        return storage.attributes(at: location, effectiveRange: range)
-    }
+//    override func attributes(at location: Int, effectiveRange range: NSRangePointer?) -> [String : Any] {
+//        return storage.attributes(at: location, effectiveRange: range)
+//    }
     
     override func replaceCharacters(in range: NSRange, with str: String) {
         beginEditing()
@@ -27,12 +27,12 @@ class TextSorage: NSTextStorage {
         endEditing()
     }
     
-    override func setAttributes(_ attrs: [String : Any]?, range: NSRange) {
-        beginEditing()
-        storage.setAttributes(attrs, range: range)
-        edited(.editedAttributes, range: range, changeInLength: 0)
-        endEditing()
-    }
+//    override func setAttributes(_ attrs: [String : Any]?, range: NSRange) {
+//        beginEditing()
+//        storage.setAttributes(attrs, range: range)
+//        edited(.editedAttributes, range: range, changeInLength: 0)
+//        endEditing()
+//    }
 }
 
 class TextKitLabel: UIView {
@@ -57,11 +57,11 @@ class TextKitLabel: UIView {
         }
     }
     
-    var font: UIFont = UIFont.systemFont(ofSize: 17) {
-        didSet {
-            textStorage.addAttributes([NSFontAttributeName: font], range: allGlyphsRange)
-        }
-    }
+//    var font: UIFont = UIFont.systemFont(ofSize: 17) {
+//        didSet {
+//            textStorage.addAttributes([NSFontAttributeName: font], range: allGlyphsRange)
+//        }
+//    }
     
     var allGlyphsRange: NSRange {
         return NSRange.init(location: 0, length: layoutManager.numberOfGlyphs-1)
